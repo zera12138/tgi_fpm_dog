@@ -1,0 +1,44 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# ---- 训练/评估产物、日志与模型权重（不入库）----
+logs/
+outputs/
+wandb/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.ts
+*.mp4
+*.log
+
+# ---- 只保留根 README，其余 Markdown 不入库 ----
+*.md
+!/README.md
+
+# ---- 内部记录、报告与调试输出 ----
+docs/
+
+# ---- 本地参考 checkout、缓存与工具状态 ----
+.ref_*/
+.video_deps/
+.agents/
+.aws/
+.codex/
+:memory:.ses
+*.ses
+
+# ---- sim2sim 的导出与运行产物 ----
+sim2sim_level7/exported/
+sim2sim_level7/perception_out/
+sim2sim_level7/baseline_v2/
+sim2sim_level7/preview/
+sim2sim_level7/results/
+sim2sim_level7/last_run.json

@@ -1,0 +1,131 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.6.1"
+    }
+    defaultPrim = "bpx"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "bpx"
+{
+    over "Geometry"
+    {
+        over "torso"
+        {
+            over "fl_hip_link"
+            {
+                over "fl_thigh_link"
+                {
+                    over "fl_calf_link"
+                    {
+                        over "fl_knee_joint" (
+                            prepend apiSchemas = ["PhysxJointAPI"]
+                        )
+                        {
+                        }
+                    }
+
+                    over "fl_hip_pitch_joint" (
+                        prepend apiSchemas = ["PhysxJointAPI"]
+                    )
+                    {
+                    }
+                }
+
+                over "fl_hip_roll_joint" (
+                    prepend apiSchemas = ["PhysxJointAPI"]
+                )
+                {
+                }
+            }
+
+            over "fr_hip_link"
+            {
+                over "fr_thigh_link"
+                {
+                    over "fr_calf_link"
+                    {
+                        over "fr_knee_joint" (
+                            prepend apiSchemas = ["PhysxJointAPI"]
+                        )
+                        {
+                        }
+                    }
+
+                    over "fr_hip_pitch_joint" (
+                        prepend apiSchemas = ["PhysxJointAPI"]
+                    )
+                    {
+                    }
+                }
+
+                over "fr_hip_roll_joint" (
+                    prepend apiSchemas = ["PhysxJointAPI"]
+                )
+                {
+                }
+            }
+
+            over "hl_hip_link"
+            {
+                over "hl_thigh_link"
+                {
+                    over "hl_calf_link"
+                    {
+                        over "hl_knee_joint" (
+                            prepend apiSchemas = ["PhysxJointAPI"]
+                        )
+                        {
+                        }
+                    }
+
+                    over "hl_hip_pitch_joint" (
+                        prepend apiSchemas = ["PhysxJointAPI"]
+                    )
+                    {
+                    }
+                }
+
+                over "hl_hip_roll_joint" (
+                    prepend apiSchemas = ["PhysxJointAPI"]
+                )
+                {
+                }
+            }
+
+            over "hr_hip_link"
+            {
+                over "hr_thigh_link"
+                {
+                    over "hr_calf_link"
+                    {
+                        over "hr_knee_joint" (
+                            prepend apiSchemas = ["PhysxJointAPI"]
+                        )
+                        {
+                        }
+                    }
+
+                    over "hr_hip_pitch_joint" (
+                        prepend apiSchemas = ["PhysxJointAPI"]
+                    )
+                    {
+                    }
+                }
+
+                over "hr_hip_roll_joint" (
+                    prepend apiSchemas = ["PhysxJointAPI"]
+                )
+                {
+                }
+            }
+        }
+    }
+}
+

@@ -1,0 +1,191 @@
+<mujoco model="bpx">
+  <compiler angle="radian" fusestatic="false" inertiafromgeom="false" autolimits="true" />
+  <option timestep="0.005" integrator="implicitfast" gravity="0 0 -9.81" />
+  <default>
+    <joint armature="0.01" damping="0.0" frictionloss="0.0" />
+    <geom friction="0.8 0.005 0.0001" condim="3" solref="0.01 1" />
+  </default>
+  <asset>
+    <mesh name="mesh_0" file="../../../../urdf/meshes/torso.obj" scale="1 1 1" />
+    <mesh name="mesh_1" file="../../../../urdf/meshes/hip.obj" scale="1 1 1" />
+    <mesh name="mesh_2" file="../../../../urdf/meshes/l_thigh.obj" scale="1 1 1" />
+    <mesh name="mesh_3" file="../../../../urdf/meshes/calf.obj" scale="1 1 1" />
+    <mesh name="mesh_4" file="../../../../urdf/meshes/toe.obj" scale="1 1 1" />
+    <mesh name="mesh_5" file="../../../../urdf/meshes/r_thigh.obj" scale="1 1 1" />
+    <mesh name="mesh_6" file="../../../../urdf/meshes/BackPlate.stl" scale="0.001 0.001 0.001" />
+    <mesh name="mesh_7" file="../../../../urdf/meshes/EnclosureWall.stl" scale="0.001 0.001 0.001" />
+    <mesh name="mesh_8" file="../../../../urdf/meshes/Lid.stl" scale="0.001 0.001 0.001" />
+    <mesh name="mesh_9" file="../../../../urdf/meshes/camera_mount_v9/Base_m.stl" scale="1 1 1" />
+    <mesh name="mesh_10" file="../../../../urdf/meshes/camera_mount_v9/Carrier_30deg_m.stl" scale="1 1 1" />
+    <mesh name="mesh_11" file="../../../../urdf/meshes/zed2i.stl" scale="1 1 1" />
+  </asset>
+  <worldbody>
+    <body name="torso" pos="0 0 0.43">
+      <freejoint name="root" />
+      <inertial pos="0.0151448 0.0033341 -0.0031076" mass="6.829" fullinertia="0.0291671 0.1285119 0.1380718 0.0019891 0.0003146 8.12e-05" />
+      <geom name="torso_collision_0" pos="0 0 0" quat="1 0 0 0" group="3" type="box" size="0.1706 0.08 0.0791" />
+      <geom name="torso_collision_1" pos="0 0 -0.09" quat="1 0 0 0" group="3" type="box" size="0.1706 0.08 0.014" />
+      <geom name="torso_collision_2" pos="0.28 0 0" quat="1 0 0 0" group="3" type="box" size="0.006645 0.068 0.013" />
+      <geom name="torso_collision_3" pos="-0.28 0 0" quat="1 0 0 0" group="3" type="box" size="0.006645 0.068 0.013" />
+      <geom name="torso_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_0" />
+      <body name="fl_hip_link" pos="0.2386 0.056 0" quat="1 0 0 0">
+        <joint name="fl_hip_roll_joint" type="hinge" axis="1 0 0" range="-0.8727 0.8727" />
+        <inertial pos="-0.0116642 0.0141251 0.000331" mass="0.554" fullinertia="0.00033 0.00042 0.000375 4e-05 0 0" />
+        <geom name="fl_hip_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_1" />
+        <body name="fl_thigh_link" pos="0 0.11522 0" quat="1 0 0 0">
+          <joint name="fl_hip_pitch_joint" type="hinge" axis="0 1 0" range="-0.7854 2.60661" />
+          <inertial pos="-0.003 -0.021 -0.05052" mass="1.213" fullinertia="0.0083046 0.008163 0.0013678 -8.72e-05 0.0003596 -0.0013242" />
+          <geom name="fl_thigh_link_collision_0" pos="0 -0.02482 0" quat="0.70710679066 -0.707106771713 0 0" group="3" type="cylinder" size="0.044 0.04" />
+          <geom name="fl_thigh_link_collision_1" pos="-0.02 0.0017152 -0.11" quat="0.70710679066 -0.707106771713 0 0" group="3" type="box" size="0.0225 0.065 0.0145" />
+          <geom name="fl_thigh_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_2" />
+          <body name="fl_calf_link" pos="0 0 -0.23" quat="1 0 0 0">
+            <joint name="fl_knee_joint" type="hinge" axis="0 1 0" range="-2.7531 -0.5539" />
+            <inertial pos="0.0057553 0 -0.10442" mass="0.253" fullinertia="0.00199 0.00201 5e-05 0 -0.0001442 0" />
+            <geom name="fl_calf_link_collision_0" pos="0.01 0 -0.1" quat="0.997564051661 0 -0.0697564537133 0" group="3" type="box" size="0.01 0.01 0.075" />
+            <geom name="fl_calf_link_collision_1" pos="0.011 0 -0.205" quat="0.998134796824 0 0.0610485656662 0" group="3" type="box" size="0.015 0.01 0.035" />
+            <geom name="fl_calf_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_3" />
+            <body name="fl_toe_link" pos="0 0 -0.2315648" quat="1 0 0 0">
+              <inertial pos="-0.0089593 0 -0.014631" mass="0.062" fullinertia="1.9e-05 2.63e-05 2.25e-05 0 2.7e-06 0" />
+              <geom name="fl_toe_link_collision_0" pos="0 0 -0.012" quat="0.70710679066 -0.707106771713 0 0" group="3" type="cylinder" size="0.027 0.0179" />
+              <geom name="fl_toe_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_4" />
+              <site name="fl_foot" pos="0 0 -0.012" size="0.006" rgba="1 0.2 0.1 1" />
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="fr_hip_link" pos="0.2386 -0.056 0" quat="1 0 0 0">
+        <joint name="fr_hip_roll_joint" type="hinge" axis="1 0 0" range="-0.8727 0.8727" />
+        <inertial pos="-0.0116642 -0.0141251 0.000331" mass="0.554" fullinertia="0.00033 0.00042 0.000375 -4e-05 0 0" />
+        <geom name="fr_hip_link_visual_0" pos="0 0 0" quat="-3.67320510335e-06 0.999999999993 0 -0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_1" />
+        <body name="fr_thigh_link" pos="0 -0.11522 0" quat="1 0 0 0">
+          <joint name="fr_hip_pitch_joint" type="hinge" axis="0 1 0" range="-0.7854 2.60661" />
+          <inertial pos="-0.003 0.021 -0.05052" mass="1.213" fullinertia="0.0083046 0.008163 0.0013678 8.72e-05 0.0003596 0.0013242" />
+          <geom name="fr_thigh_link_collision_0" pos="0 0.02482 0" quat="0.70710679066 -0.707106771713 0 0" group="3" type="cylinder" size="0.044 0.04" />
+          <geom name="fr_thigh_link_collision_1" pos="-0.02 -0.0017152 -0.11" quat="0.70710679066 -0.707106771713 0 0" group="3" type="box" size="0.0225 0.065 0.0145" />
+          <geom name="fr_thigh_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_5" />
+          <body name="fr_calf_link" pos="0 0 -0.23" quat="1 0 0 0">
+            <joint name="fr_knee_joint" type="hinge" axis="0 1 0" range="-2.7531 -0.5539" />
+            <inertial pos="0.0057553 0 -0.10442" mass="0.253" fullinertia="0.00199 0.00201 5e-05 0 -0.0001442 0" />
+            <geom name="fr_calf_link_collision_0" pos="0.01 0 -0.1" quat="0.997564051661 0 -0.0697564537133 0" group="3" type="box" size="0.01 0.01 0.075" />
+            <geom name="fr_calf_link_collision_1" pos="0.011 0 -0.205" quat="0.998134796824 0 0.0610485656662 0" group="3" type="box" size="0.015 0.01 0.035" />
+            <geom name="fr_calf_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_3" />
+            <body name="fr_toe_link" pos="0 0 -0.2315648" quat="1 0 0 0">
+              <inertial pos="-0.0089593 0 -0.014631" mass="0.062" fullinertia="1.9e-05 2.63e-05 2.25e-05 0 2.7e-06 0" />
+              <geom name="fr_toe_link_collision_0" pos="0 0 -0.012" quat="0.70710679066 -0.707106771713 0 0" group="3" type="cylinder" size="0.027 0.0179" />
+              <geom name="fr_toe_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_4" />
+              <site name="fr_foot" pos="0 0 -0.012" size="0.006" rgba="1 0.2 0.1 1" />
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="hl_hip_link" pos="-0.2386 0.056 0" quat="1 0 0 0">
+        <joint name="hl_hip_roll_joint" type="hinge" axis="1 0 0" range="-0.8727 0.8727" />
+        <inertial pos="-0.0116642 0.0141251 0.000331" mass="0.554" fullinertia="0.00033 0.00042 0.000375 4e-05 0 0" />
+        <geom name="hl_hip_link_visual_0" pos="0 0 0" quat="1.34924357313e-11 -3.67320510332e-06 0.999999999987 -3.67320510332e-06" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_1" />
+        <body name="hl_thigh_link" pos="0 0.11522 0" quat="1 0 0 0">
+          <joint name="hl_hip_pitch_joint" type="hinge" axis="0 1 0" range="-0.7854 2.60661" />
+          <inertial pos="-0.003 -0.021 -0.05052" mass="1.213" fullinertia="0.0083046 0.008163 0.0013678 -8.72e-05 0.0003596 -0.0013242" />
+          <geom name="hl_thigh_link_collision_0" pos="0 -0.02482 0" quat="0.70710679066 -0.707106771713 0 0" group="3" type="cylinder" size="0.044 0.04" />
+          <geom name="hl_thigh_link_collision_1" pos="-0.02 0.0017152 -0.11" quat="0.70710679066 -0.707106771713 0 0" group="3" type="box" size="0.0225 0.065 0.0145" />
+          <geom name="hl_thigh_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_2" />
+          <body name="hl_calf_link" pos="0 0 -0.23" quat="1 0 0 0">
+            <joint name="hl_knee_joint" type="hinge" axis="0 1 0" range="-2.7531 -0.5539" />
+            <inertial pos="0.0057553 0 -0.10442" mass="0.253" fullinertia="0.00199 0.00201 5e-05 0 -0.0001442 0" />
+            <geom name="hl_calf_link_collision_0" pos="0.01 0 -0.1" quat="0.997564051661 0 -0.0697564537133 0" group="3" type="box" size="0.01 0.01 0.075" />
+            <geom name="hl_calf_link_collision_1" pos="0.011 0 -0.205" quat="0.998134796824 0 0.0610485656662 0" group="3" type="box" size="0.015 0.01 0.035" />
+            <geom name="hl_calf_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_3" />
+            <body name="hl_toe_link" pos="0 0 -0.2315648" quat="1 0 0 0">
+              <inertial pos="-0.0089593 0 -0.014631" mass="0.062" fullinertia="1.9e-05 2.63e-05 2.25e-05 0 2.7e-06 0" />
+              <geom name="hl_toe_link_collision_0" pos="0 0 -0.012" quat="0.70710679066 -0.707106771713 0 0" group="3" type="cylinder" size="0.027 0.0179" />
+              <geom name="hl_toe_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_4" />
+              <site name="hl_foot" pos="0 0 -0.012" size="0.006" rgba="1 0.2 0.1 1" />
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="hr_hip_link" pos="-0.2386 -0.056 0" quat="1 0 0 0">
+        <joint name="hr_hip_roll_joint" type="hinge" axis="1 0 0" range="-0.8727 0.8727" />
+        <inertial pos="-0.0116642 -0.0141251 0.000331" mass="0.554" fullinertia="0.00033 0.00042 0.000375 -4e-05 0 0" />
+        <geom name="hr_hip_link_visual_0" pos="0 0 0" quat="-3.67320510335e-06 -0 0 0.999999999993" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_1" />
+        <body name="hr_thigh_link" pos="0 -0.11522 0" quat="1 0 0 0">
+          <joint name="hr_hip_pitch_joint" type="hinge" axis="0 1 0" range="-0.7854 2.60661" />
+          <inertial pos="-0.003 0.021 -0.05052" mass="1.213" fullinertia="0.0083046 0.008163 0.0013678 8.72e-05 0.0003596 0.0013242" />
+          <geom name="hr_thigh_link_collision_0" pos="0 0.02482 0" quat="0.70710679066 -0.707106771713 0 0" group="3" type="cylinder" size="0.044 0.04" />
+          <geom name="hr_thigh_link_collision_1" pos="-0.02 -0.0017152 -0.11" quat="0.70710679066 -0.707106771713 0 0" group="3" type="box" size="0.0225 0.065 0.0145" />
+          <geom name="hr_thigh_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_5" />
+          <body name="hr_calf_link" pos="0 0 -0.23" quat="1 0 0 0">
+            <joint name="hr_knee_joint" type="hinge" axis="0 1 0" range="-2.7531 -0.5539" />
+            <inertial pos="0.0057553 0 -0.10442" mass="0.253" fullinertia="0.00199 0.00201 5e-05 0 -0.0001442 0" />
+            <geom name="hr_calf_link_collision_0" pos="0.01 0 -0.1" quat="0.997564051661 0 -0.0697564537133 0" group="3" type="box" size="0.01 0.01 0.075" />
+            <geom name="hr_calf_link_collision_1" pos="0.011 0 -0.205" quat="0.998134796824 0 0.0610485656662 0" group="3" type="box" size="0.015 0.01 0.035" />
+            <geom name="hr_calf_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_3" />
+            <body name="hr_toe_link" pos="0 0 -0.2315648" quat="1 0 0 0">
+              <inertial pos="-0.0089593 0 -0.014631" mass="0.062" fullinertia="1.9e-05 2.63e-05 2.25e-05 0 2.7e-06 0" />
+              <geom name="hr_toe_link_collision_0" pos="0 0 -0.012" quat="0.70710679066 -0.707106771713 0 0" group="3" type="cylinder" size="0.027 0.0179" />
+              <geom name="hr_toe_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_4" />
+              <site name="hr_foot" pos="0 0 -0.012" size="0.006" rgba="1 0.2 0.1 1" />
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="backplate" pos="0 0 0.0791" quat="1 0 0 0">
+        <inertial pos="7.98754045e-05 -0.000199384973 0.00200060894" mass="0.209926668" fullinertia="0.000467124718 0.00134483319 0.00181139823 -3.61815051e-09 1.75497348e-08 -2.49312487e-11" />
+        <geom name="backplate_collision_0" pos="0 0 0.002" quat="1 0 0 0" group="3" type="box" size="0.145 0.08 0.002" />
+        <geom name="backplate_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_6" />
+        <body name="enclosure_wall" pos="-0.0465 0 0.004" quat="1 0 0 0">
+          <inertial pos="0.00805919617 -2.53660311e-08 0.0161815458" mass="0.0590484226" fullinertia="0.000124034926 0.000126593226 0.000219664778 2.54604525e-11 -6.0135935e-06 3.98366772e-11" />
+          <geom name="enclosure_wall_collision_0" pos="0 0 0.0245" quat="1 0 0 0" group="3" type="box" size="0.0475 0.054 0.0245" />
+          <geom name="enclosure_wall_collision_1" pos="-0.054 0 0.00275" quat="1 0 0 0" group="3" type="box" size="0.0065 0.067 0.00275" />
+          <geom name="enclosure_wall_collision_2" pos="0.054 0 0.00275" quat="1 0 0 0" group="3" type="box" size="0.0065 0.067 0.00275" />
+          <geom name="enclosure_wall_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_7" />
+        </body>
+        <body name="lid" pos="-0.0477 0 0.042" quat="1 0 0 0">
+          <inertial pos="-0.00762654096 -2.34340316e-08 0.00622659922" mass="0.0280826662" fullinertia="3.16123241e-05 2.30742506e-05 5.45821838e-05 1.92618079e-11 -2.85515878e-07 -6.18097177e-12" />
+          <geom name="lid_collision_0" pos="0 0 0.004" quat="1 0 0 0" group="3" type="box" size="0.0463 0.0516 0.004" />
+          <geom name="lid_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_8" />
+        </body>
+      </body>
+      <body name="camera_mount_base" pos="0 0 0" quat="1 0 0 0">
+        <inertial pos="0.300649081343 0.000190505241386 0.029603947197" mass="0.0651696758735" fullinertia="3.54921533071e-05 3.09828916834e-05 3.4794664376e-05 -1.14225352737e-07 -9.85069437637e-08 -4.1694523263e-08" />
+        <geom name="camera_mount_base_collision_0" pos="0 0 0" quat="1 0 0 0" group="3" type="mesh" mesh="mesh_9" />
+        <geom name="camera_mount_base_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_9" />
+        <body name="cam_bracket" pos="0 0 0" quat="1 0 0 0">
+          <inertial pos="0.296809791149 0.000121637268842 0.0752206564949" mass="0.0765956464529" fullinertia="0.00012026201916 6.76484524096e-05 6.22050401477e-05 2.11203005307e-08 3.99436705885e-06 3.86840615553e-07" />
+          <geom name="cam_bracket_collision_0" pos="0 0 0" quat="1 0 0 0" group="3" type="mesh" mesh="mesh_10" />
+          <geom name="cam_bracket_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_10" />
+          <body name="zed_front_camera_link" pos="0.310499988794 0 0.0872057420664" quat="0.965925826289 0 0.258819045102 0">
+            <body name="zed_front_camera_center" pos="0 0 0.015" quat="1 0 0 0">
+              <inertial pos="-0.00641 0 0.000185" mass="0.230" fullinertia="0.0006062 5.314e-05 0.0006242 0 0 0" />
+              <geom name="zed_front_camera_center_collision_0" pos="-0.00641 0 0.000185" quat="1 0 0 0" group="3" type="box" size="0.02155 0.087625 0.015125" />
+              <geom name="zed_front_camera_center_visual_0" pos="-0.01 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_11" />
+              <body name="zed_front_left_camera_frame" pos="-0.005 0.06 0" quat="1 0 0 0">
+                <body name="zed_front_left_camera_frame_optical" pos="0 0 0" quat="0.500000013397 -0.5 0.499999986603 -0.5" />
+                <body name="zed_front_imu_link" pos="0.005 -0.06 0" quat="1 0 0 0" />
+              </body>
+              <body name="zed_front_right_camera_frame" pos="-0.005 -0.06 0" quat="1 0 0 0">
+                <body name="zed_front_right_camera_frame_optical" pos="0 0 0" quat="0.500000013397 -0.5 0.499999986603 -0.5" />
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <motor name="fl_hip_roll_joint" joint="fl_hip_roll_joint" ctrlrange="-30.0 30.0" />
+    <motor name="fl_hip_pitch_joint" joint="fl_hip_pitch_joint" ctrlrange="-30.0 30.0" />
+    <motor name="fl_knee_joint" joint="fl_knee_joint" ctrlrange="-30.0 30.0" />
+    <motor name="fr_hip_roll_joint" joint="fr_hip_roll_joint" ctrlrange="-30.0 30.0" />
+    <motor name="fr_hip_pitch_joint" joint="fr_hip_pitch_joint" ctrlrange="-30.0 30.0" />
+    <motor name="fr_knee_joint" joint="fr_knee_joint" ctrlrange="-30.0 30.0" />
+    <motor name="hl_hip_roll_joint" joint="hl_hip_roll_joint" ctrlrange="-30.0 30.0" />
+    <motor name="hl_hip_pitch_joint" joint="hl_hip_pitch_joint" ctrlrange="-30.0 30.0" />
+    <motor name="hl_knee_joint" joint="hl_knee_joint" ctrlrange="-30.0 30.0" />
+    <motor name="hr_hip_roll_joint" joint="hr_hip_roll_joint" ctrlrange="-30.0 30.0" />
+    <motor name="hr_hip_pitch_joint" joint="hr_hip_pitch_joint" ctrlrange="-30.0 30.0" />
+    <motor name="hr_knee_joint" joint="hr_knee_joint" ctrlrange="-30.0 30.0" />
+  </actuator>
+  <keyframe>
+    <key name="stand" qpos="0 0 0.43 1 0 0 0 0 0.698131700798 -1.1344640138 0 0.698131700798 -1.1344640138 0 0.698131700798 -1.1344640138 0 0.698131700798 -1.1344640138" />
+  </keyframe>
+</mujoco>

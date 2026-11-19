@@ -1,0 +1,9 @@
+{
+  "max_command": [0.6, 0.25, 0.7],
+  "min_command": [-0.3, -0.25, -0.7],
+  "axes": {"vx": 1, "vy": 0, "yaw": 3},
+  "buttons": {"resume": 0, "stop": 1, "next_spawn": 5, "reset": 6, "pause": 7},
+  "reference_helpers": "/home/odroid/moe_lant/deploy/deploy_mujoco/utils.py",
+  "project": "/home/odroid/bpx-tgi-fpm",
+  "python": "/home/odroid/anaconda3/envs/rl_lab/bin/python"
+}

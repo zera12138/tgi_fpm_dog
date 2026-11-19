@@ -1,0 +1,67 @@
+[
+  {
+    "spawn": 1,
+    "name": "stairs approach",
+    "seconds": 25.0,
+    "fallen": false,
+    "final_xyz": [
+      7.438874615946778,
+      -0.002280268616163822,
+      0.7672107026045728
+    ],
+    "max_torque": 30.0,
+    "markers_finite": true
+  },
+  {
+    "spawn": 2,
+    "name": "stairs descent",
+    "seconds": 25.0,
+    "fallen": false,
+    "final_xyz": [
+      -2.3479567533889862,
+      -0.24835830182610114,
+      0.4185716213726682
+    ],
+    "max_torque": 26.173565578465173,
+    "markers_finite": true
+  },
+  {
+    "spawn": 3,
+    "name": "slope ascent",
+    "seconds": 25.0,
+    "fallen": false,
+    "final_xyz": [
+      2.091733818449983,
+      -0.24608013295169504,
+      0.5679830866465958
+    ],
+    "max_torque": 29.407753318735455,
+    "markers_finite": true
+  },
+  {
+    "spawn": 4,
+    "name": "stepping stones",
+    "seconds": 25.0,
+    "fallen": false,
+    "final_xyz": [
+      7.3067183131537625,
+      4.919019523210683,
+      0.42408646272809425
+    ],
+    "max_torque": 28.488083168080905,
+    "markers_finite": true
+  },
+  {
+    "spawn": 5,
+    "name": "rough ground",
+    "seconds": 25.0,
+    "fallen": false,
+    "final_xyz": [
+      7.3215050920064355,
+      -4.5875462030031215,
+      0.4285324202175391
+    ],
+    "max_torque": 25.717447788695793,
+    "markers_finite": true
+  }
+]

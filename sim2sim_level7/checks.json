@@ -1,0 +1,59 @@
+{
+  "input_mapping": "reference axes/signs/deadzone passed",
+  "stop_resume_disconnect": "passed (synthetic joystick)",
+  "map_collision_max_error": 2.956390332542469e-08,
+  "marker_full_rotation_and_surface": "passed",
+  "resets_and_standing": [
+    {
+      "spawn": 1,
+      "seconds": 2,
+      "standing": true,
+      "xyz": [
+        -0.007532281089483212,
+        -0.0006479254560542526,
+        0.4223360234056131
+      ]
+    },
+    {
+      "spawn": 2,
+      "seconds": 2,
+      "standing": true,
+      "xyz": [
+        4.90756226000595,
+        0.0006371459843433243,
+        1.4423336590063671
+      ]
+    },
+    {
+      "spawn": 3,
+      "seconds": 2,
+      "standing": true,
+      "xyz": [
+        9.180303691962783,
+        0.0006350048400462413,
+        0.4223324687838269
+      ]
+    },
+    {
+      "spawn": 4,
+      "seconds": 2,
+      "standing": true,
+      "xyz": [
+        0.3924664867477498,
+        4.749358403630852,
+        0.4223364542303845
+      ]
+    },
+    {
+      "spawn": 5,
+      "seconds": 2,
+      "standing": true,
+      "xyz": [
+        0.39246648674775403,
+        -4.750641596369141,
+        0.4223364542303848
+      ]
+    }
+  ],
+  "hardware_gamepad": "not available in sandbox"
+}

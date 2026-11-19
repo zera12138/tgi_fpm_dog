@@ -1,0 +1,205 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.6.1"
+    }
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Scope "Instances"
+{
+    def Xform "torso_visual_0" (
+        prepend references = @./geometries.usd@</Geometries/torso_visual_0>
+    )
+    {
+        over "torso_visual_0" (
+            apiSchemas = ["MjcImageableAPI"]
+        )
+        {
+            int mjc:group = 2
+        }
+    }
+
+    def Xform "fl_hip_link_visual_0" (
+        prepend references = @./geometries.usd@</Geometries/fl_hip_link_visual_0>
+    )
+    {
+        over "fl_hip_link_visual_0" (
+            apiSchemas = ["MjcImageableAPI"]
+        )
+        {
+            int mjc:group = 2
+        }
+    }
+
+    def Xform "fl_thigh_link_visual_0" (
+        prepend references = @./geometries.usd@</Geometries/fl_thigh_link_visual_0>
+    )
+    {
+        over "fl_thigh_link_visual_0" (
+            apiSchemas = ["MjcImageableAPI"]
+        )
+        {
+            int mjc:group = 2
+        }
+    }
+
+    def Xform "fl_calf_link_visual_0" (
+        prepend references = @./geometries.usd@</Geometries/fl_calf_link_visual_0>
+    )
+    {
+        over "fl_calf_link_visual_0" (
+            apiSchemas = ["MjcImageableAPI"]
+        )
+        {
+            int mjc:group = 2
+        }
+    }
+
+    def Xform "fl_toe_link_visual_0" (
+        prepend references = @./geometries.usd@</Geometries/fl_toe_link_visual_0>
+    )
+    {
+        over "fl_toe_link_visual_0" (
+            apiSchemas = ["MjcImageableAPI"]
+        )
+        {
+            int mjc:group = 2
+        }
+    }
+
+    def Xform "fr_thigh_link_visual_0" (
+        prepend references = @./geometries.usd@</Geometries/fr_thigh_link_visual_0>
+    )
+    {
+        over "fr_thigh_link_visual_0" (
+            apiSchemas = ["MjcImageableAPI"]
+        )
+        {
+            int mjc:group = 2
+        }
+    }
+
+    def Xform "backplate_visual_0" (
+        prepend references = @./geometries.usd@</Geometries/backplate_visual_0>
+    )
+    {
+        over "backplate_visual_0" (
+            apiSchemas = ["MjcImageableAPI"]
+        )
+        {
+            int mjc:group = 2
+        }
+    }
+
+    def Xform "enclosure_wall_visual_0" (
+        prepend references = @./geometries.usd@</Geometries/enclosure_wall_visual_0>
+    )
+    {
+        over "enclosure_wall_visual_0" (
+            apiSchemas = ["MjcImageableAPI"]
+        )
+        {
+            int mjc:group = 2
+        }
+    }
+
+    def Xform "lid_visual_0" (
+        prepend references = @./geometries.usd@</Geometries/lid_visual_0>
+    )
+    {
+        over "lid_visual_0" (
+            apiSchemas = ["MjcImageableAPI"]
+        )
+        {
+            int mjc:group = 2
+        }
+    }
+
+    def Xform "camera_mount_base_collision_0" (
+        prepend references = @./geometries.usd@</Geometries/camera_mount_base_collision_0>
+    )
+    {
+        over "camera_mount_base_collision_0" (
+            apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+        )
+        {
+            custom rel material:binding:physics = None
+            int mjc:group = 3
+            double[] mjc:solref = [0.01, 1]
+            float newton:contactGap = 0 (
+                limits = {
+                    dictionary hard = {
+                        double minimum = 0
+                    }
+                }
+            )
+            token physics:approximation = "convexHull"
+            float physics:density = 1000
+            token purpose = "guide"
+        }
+    }
+
+    def Xform "camera_mount_base_visual_0" (
+        prepend references = @./geometries.usd@</Geometries/camera_mount_base_visual_0>
+    )
+    {
+        over "camera_mount_base_visual_0" (
+            apiSchemas = ["MjcImageableAPI"]
+        )
+        {
+            int mjc:group = 2
+        }
+    }
+
+    def Xform "cam_bracket_collision_0" (
+        prepend references = @./geometries.usd@</Geometries/cam_bracket_collision_0>
+    )
+    {
+        over "cam_bracket_collision_0" (
+            apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+        )
+        {
+            custom rel material:binding:physics = None
+            int mjc:group = 3
+            double[] mjc:solref = [0.01, 1]
+            float newton:contactGap = 0 (
+                limits = {
+                    dictionary hard = {
+                        double minimum = 0
+                    }
+                }
+            )
+            token physics:approximation = "convexHull"
+            float physics:density = 1000
+            token purpose = "guide"
+        }
+    }
+
+    def Xform "cam_bracket_visual_0" (
+        prepend references = @./geometries.usd@</Geometries/cam_bracket_visual_0>
+    )
+    {
+        over "cam_bracket_visual_0" (
+            apiSchemas = ["MjcImageableAPI"]
+        )
+        {
+            int mjc:group = 2
+        }
+    }
+
+    def Xform "zed_front_camera_center_visual_0" (
+        prepend references = @./geometries.usd@</Geometries/zed_front_camera_center_visual_0>
+    )
+    {
+        over "zed_front_camera_center_visual_0" (
+            apiSchemas = ["MjcImageableAPI"]
+        )
+        {
+            int mjc:group = 2
+        }
+    }
+}
+

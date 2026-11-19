@@ -1,0 +1,751 @@
+<mujoco model="BPX_TGI_Level7_Gamepad">
+  <compiler angle="radian" fusestatic="false" inertiafromgeom="false" autolimits="true" />
+  <option timestep="0.005" integrator="implicitfast" gravity="0 0 -9.81" />
+  <default>
+    <joint armature="0.01" damping="0.0" frictionloss="0.0" />
+    <geom friction="0.8 0.005 0.0001" condim="3" solref="0.01 1" />
+  </default>
+  <asset>
+    <mesh name="mesh_0" file="/home/odroid/bpx-tgi-fpm/urdf/meshes/torso.obj" scale="1 1 1" />
+    <mesh name="mesh_1" file="/home/odroid/bpx-tgi-fpm/urdf/meshes/hip.obj" scale="1 1 1" />
+    <mesh name="mesh_2" file="/home/odroid/bpx-tgi-fpm/urdf/meshes/l_thigh.obj" scale="1 1 1" />
+    <mesh name="mesh_3" file="/home/odroid/bpx-tgi-fpm/urdf/meshes/calf.obj" scale="1 1 1" />
+    <mesh name="mesh_4" file="/home/odroid/bpx-tgi-fpm/urdf/meshes/toe.obj" scale="1 1 1" />
+    <mesh name="mesh_5" file="/home/odroid/bpx-tgi-fpm/urdf/meshes/r_thigh.obj" scale="1 1 1" />
+    <mesh name="mesh_6" file="/home/odroid/bpx-tgi-fpm/urdf/meshes/BackPlate.stl" scale="0.001 0.001 0.001" />
+    <mesh name="mesh_7" file="/home/odroid/bpx-tgi-fpm/urdf/meshes/EnclosureWall.stl" scale="0.001 0.001 0.001" />
+    <mesh name="mesh_8" file="/home/odroid/bpx-tgi-fpm/urdf/meshes/Lid.stl" scale="0.001 0.001 0.001" />
+    <mesh name="mesh_9" file="/home/odroid/bpx-tgi-fpm/urdf/meshes/camera_mount_v9/Base_m.stl" scale="1 1 1" />
+    <mesh name="mesh_10" file="/home/odroid/bpx-tgi-fpm/urdf/meshes/camera_mount_v9/Carrier_30deg_m.stl" scale="1 1 1" />
+    <mesh name="mesh_11" file="/home/odroid/bpx-tgi-fpm/urdf/meshes/zed2i.stl" scale="1 1 1" />
+    <texture name="yard_sky" type="skybox" builtin="gradient" rgb1=".20 .31 .45" rgb2=".75 .83 .88" width="512" height="3072" />
+    <texture name="yard_grid" type="2d" builtin="checker" rgb1=".23 .28 .32" rgb2=".29 .34 .38" width="512" height="512" />
+    <material name="yard_floor" texture="yard_grid" texrepeat="1 1" texuniform="true" reflectance=".04" />
+    <material name="step_even" rgba=".74 .79 .83 1" specular=".15" shininess=".12" />
+    <material name="step_odd" rgba=".62 .68 .73 1" specular=".15" shininess=".12" />
+  </asset>
+  <worldbody>
+    <geom name="ground" type="plane" size="0 0 0.1" rgba=".09 .12 .15 1" pos="0 0 -.8" group="0" />
+    <body name="torso" pos="0 0 0.43">
+      <freejoint name="root" />
+      <inertial pos="0.0151448 0.0033341 -0.0031076" mass="6.829" fullinertia="0.0291671 0.1285119 0.1380718 0.0019891 0.0003146 8.12e-05" />
+      <geom name="torso_collision_0" pos="0 0 0" quat="1 0 0 0" group="3" type="box" size="0.1706 0.08 0.0791" />
+      <geom name="torso_collision_1" pos="0 0 -0.09" quat="1 0 0 0" group="3" type="box" size="0.1706 0.08 0.014" />
+      <geom name="torso_collision_2" pos="0.28 0 0" quat="1 0 0 0" group="3" type="box" size="0.006645 0.068 0.013" />
+      <geom name="torso_collision_3" pos="-0.28 0 0" quat="1 0 0 0" group="3" type="box" size="0.006645 0.068 0.013" />
+      <geom name="torso_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_0" />
+      <body name="fl_hip_link" pos="0.2386 0.056 0" quat="1 0 0 0">
+        <joint name="fl_hip_roll_joint" type="hinge" axis="1 0 0" range="-0.8727 0.8727" />
+        <inertial pos="-0.0116642 0.0141251 0.000331" mass="0.554" fullinertia="0.00033 0.00042 0.000375 4e-05 0 0" />
+        <geom name="fl_hip_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_1" />
+        <body name="fl_thigh_link" pos="0 0.11522 0" quat="1 0 0 0">
+          <joint name="fl_hip_pitch_joint" type="hinge" axis="0 1 0" range="-0.7854 2.60661" />
+          <inertial pos="-0.003 -0.021 -0.05052" mass="1.213" fullinertia="0.0083046 0.008163 0.0013678 -8.72e-05 0.0003596 -0.0013242" />
+          <geom name="fl_thigh_link_collision_0" pos="0 -0.02482 0" quat="0.70710679066 -0.707106771713 0 0" group="3" type="cylinder" size="0.044 0.04" />
+          <geom name="fl_thigh_link_collision_1" pos="-0.02 0.0017152 -0.11" quat="0.70710679066 -0.707106771713 0 0" group="3" type="box" size="0.0225 0.065 0.0145" />
+          <geom name="fl_thigh_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_2" />
+          <body name="fl_calf_link" pos="0 0 -0.23" quat="1 0 0 0">
+            <joint name="fl_knee_joint" type="hinge" axis="0 1 0" range="-2.7531 -0.5539" />
+            <inertial pos="0.0057553 0 -0.10442" mass="0.253" fullinertia="0.00199 0.00201 5e-05 0 -0.0001442 0" />
+            <geom name="fl_calf_link_collision_0" pos="0.01 0 -0.1" quat="0.997564051661 0 -0.0697564537133 0" group="3" type="box" size="0.01 0.01 0.075" />
+            <geom name="fl_calf_link_collision_1" pos="0.011 0 -0.205" quat="0.998134796824 0 0.0610485656662 0" group="3" type="box" size="0.015 0.01 0.035" />
+            <geom name="fl_calf_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_3" />
+            <body name="fl_toe_link" pos="0 0 -0.2315648" quat="1 0 0 0">
+              <inertial pos="-0.0089593 0 -0.014631" mass="0.062" fullinertia="1.9e-05 2.63e-05 2.25e-05 0 2.7e-06 0" />
+              <geom name="fl_toe_link_collision_0" pos="0 0 -0.012" quat="0.70710679066 -0.707106771713 0 0" group="3" type="cylinder" size="0.027 0.0179" />
+              <geom name="fl_toe_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_4" />
+              <site name="fl_foot" pos="0 0 -0.012" size="0.006" rgba="1 0.2 0.1 1" />
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="fr_hip_link" pos="0.2386 -0.056 0" quat="1 0 0 0">
+        <joint name="fr_hip_roll_joint" type="hinge" axis="1 0 0" range="-0.8727 0.8727" />
+        <inertial pos="-0.0116642 -0.0141251 0.000331" mass="0.554" fullinertia="0.00033 0.00042 0.000375 -4e-05 0 0" />
+        <geom name="fr_hip_link_visual_0" pos="0 0 0" quat="-3.67320510335e-06 0.999999999993 0 -0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_1" />
+        <body name="fr_thigh_link" pos="0 -0.11522 0" quat="1 0 0 0">
+          <joint name="fr_hip_pitch_joint" type="hinge" axis="0 1 0" range="-0.7854 2.60661" />
+          <inertial pos="-0.003 0.021 -0.05052" mass="1.213" fullinertia="0.0083046 0.008163 0.0013678 8.72e-05 0.0003596 0.0013242" />
+          <geom name="fr_thigh_link_collision_0" pos="0 0.02482 0" quat="0.70710679066 -0.707106771713 0 0" group="3" type="cylinder" size="0.044 0.04" />
+          <geom name="fr_thigh_link_collision_1" pos="-0.02 -0.0017152 -0.11" quat="0.70710679066 -0.707106771713 0 0" group="3" type="box" size="0.0225 0.065 0.0145" />
+          <geom name="fr_thigh_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_5" />
+          <body name="fr_calf_link" pos="0 0 -0.23" quat="1 0 0 0">
+            <joint name="fr_knee_joint" type="hinge" axis="0 1 0" range="-2.7531 -0.5539" />
+            <inertial pos="0.0057553 0 -0.10442" mass="0.253" fullinertia="0.00199 0.00201 5e-05 0 -0.0001442 0" />
+            <geom name="fr_calf_link_collision_0" pos="0.01 0 -0.1" quat="0.997564051661 0 -0.0697564537133 0" group="3" type="box" size="0.01 0.01 0.075" />
+            <geom name="fr_calf_link_collision_1" pos="0.011 0 -0.205" quat="0.998134796824 0 0.0610485656662 0" group="3" type="box" size="0.015 0.01 0.035" />
+            <geom name="fr_calf_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_3" />
+            <body name="fr_toe_link" pos="0 0 -0.2315648" quat="1 0 0 0">
+              <inertial pos="-0.0089593 0 -0.014631" mass="0.062" fullinertia="1.9e-05 2.63e-05 2.25e-05 0 2.7e-06 0" />
+              <geom name="fr_toe_link_collision_0" pos="0 0 -0.012" quat="0.70710679066 -0.707106771713 0 0" group="3" type="cylinder" size="0.027 0.0179" />
+              <geom name="fr_toe_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_4" />
+              <site name="fr_foot" pos="0 0 -0.012" size="0.006" rgba="1 0.2 0.1 1" />
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="hl_hip_link" pos="-0.2386 0.056 0" quat="1 0 0 0">
+        <joint name="hl_hip_roll_joint" type="hinge" axis="1 0 0" range="-0.8727 0.8727" />
+        <inertial pos="-0.0116642 0.0141251 0.000331" mass="0.554" fullinertia="0.00033 0.00042 0.000375 4e-05 0 0" />
+        <geom name="hl_hip_link_visual_0" pos="0 0 0" quat="1.34924357313e-11 -3.67320510332e-06 0.999999999987 -3.67320510332e-06" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_1" />
+        <body name="hl_thigh_link" pos="0 0.11522 0" quat="1 0 0 0">
+          <joint name="hl_hip_pitch_joint" type="hinge" axis="0 1 0" range="-0.7854 2.60661" />
+          <inertial pos="-0.003 -0.021 -0.05052" mass="1.213" fullinertia="0.0083046 0.008163 0.0013678 -8.72e-05 0.0003596 -0.0013242" />
+          <geom name="hl_thigh_link_collision_0" pos="0 -0.02482 0" quat="0.70710679066 -0.707106771713 0 0" group="3" type="cylinder" size="0.044 0.04" />
+          <geom name="hl_thigh_link_collision_1" pos="-0.02 0.0017152 -0.11" quat="0.70710679066 -0.707106771713 0 0" group="3" type="box" size="0.0225 0.065 0.0145" />
+          <geom name="hl_thigh_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_2" />
+          <body name="hl_calf_link" pos="0 0 -0.23" quat="1 0 0 0">
+            <joint name="hl_knee_joint" type="hinge" axis="0 1 0" range="-2.7531 -0.5539" />
+            <inertial pos="0.0057553 0 -0.10442" mass="0.253" fullinertia="0.00199 0.00201 5e-05 0 -0.0001442 0" />
+            <geom name="hl_calf_link_collision_0" pos="0.01 0 -0.1" quat="0.997564051661 0 -0.0697564537133 0" group="3" type="box" size="0.01 0.01 0.075" />
+            <geom name="hl_calf_link_collision_1" pos="0.011 0 -0.205" quat="0.998134796824 0 0.0610485656662 0" group="3" type="box" size="0.015 0.01 0.035" />
+            <geom name="hl_calf_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_3" />
+            <body name="hl_toe_link" pos="0 0 -0.2315648" quat="1 0 0 0">
+              <inertial pos="-0.0089593 0 -0.014631" mass="0.062" fullinertia="1.9e-05 2.63e-05 2.25e-05 0 2.7e-06 0" />
+              <geom name="hl_toe_link_collision_0" pos="0 0 -0.012" quat="0.70710679066 -0.707106771713 0 0" group="3" type="cylinder" size="0.027 0.0179" />
+              <geom name="hl_toe_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_4" />
+              <site name="hl_foot" pos="0 0 -0.012" size="0.006" rgba="1 0.2 0.1 1" />
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="hr_hip_link" pos="-0.2386 -0.056 0" quat="1 0 0 0">
+        <joint name="hr_hip_roll_joint" type="hinge" axis="1 0 0" range="-0.8727 0.8727" />
+        <inertial pos="-0.0116642 -0.0141251 0.000331" mass="0.554" fullinertia="0.00033 0.00042 0.000375 -4e-05 0 0" />
+        <geom name="hr_hip_link_visual_0" pos="0 0 0" quat="-3.67320510335e-06 -0 0 0.999999999993" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_1" />
+        <body name="hr_thigh_link" pos="0 -0.11522 0" quat="1 0 0 0">
+          <joint name="hr_hip_pitch_joint" type="hinge" axis="0 1 0" range="-0.7854 2.60661" />
+          <inertial pos="-0.003 0.021 -0.05052" mass="1.213" fullinertia="0.0083046 0.008163 0.0013678 8.72e-05 0.0003596 0.0013242" />
+          <geom name="hr_thigh_link_collision_0" pos="0 0.02482 0" quat="0.70710679066 -0.707106771713 0 0" group="3" type="cylinder" size="0.044 0.04" />
+          <geom name="hr_thigh_link_collision_1" pos="-0.02 -0.0017152 -0.11" quat="0.70710679066 -0.707106771713 0 0" group="3" type="box" size="0.0225 0.065 0.0145" />
+          <geom name="hr_thigh_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_5" />
+          <body name="hr_calf_link" pos="0 0 -0.23" quat="1 0 0 0">
+            <joint name="hr_knee_joint" type="hinge" axis="0 1 0" range="-2.7531 -0.5539" />
+            <inertial pos="0.0057553 0 -0.10442" mass="0.253" fullinertia="0.00199 0.00201 5e-05 0 -0.0001442 0" />
+            <geom name="hr_calf_link_collision_0" pos="0.01 0 -0.1" quat="0.997564051661 0 -0.0697564537133 0" group="3" type="box" size="0.01 0.01 0.075" />
+            <geom name="hr_calf_link_collision_1" pos="0.011 0 -0.205" quat="0.998134796824 0 0.0610485656662 0" group="3" type="box" size="0.015 0.01 0.035" />
+            <geom name="hr_calf_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_3" />
+            <body name="hr_toe_link" pos="0 0 -0.2315648" quat="1 0 0 0">
+              <inertial pos="-0.0089593 0 -0.014631" mass="0.062" fullinertia="1.9e-05 2.63e-05 2.25e-05 0 2.7e-06 0" />
+              <geom name="hr_toe_link_collision_0" pos="0 0 -0.012" quat="0.70710679066 -0.707106771713 0 0" group="3" type="cylinder" size="0.027 0.0179" />
+              <geom name="hr_toe_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_4" />
+              <site name="hr_foot" pos="0 0 -0.012" size="0.006" rgba="1 0.2 0.1 1" />
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="backplate" pos="0 0 0.0791" quat="1 0 0 0">
+        <inertial pos="7.98754045e-05 -0.000199384973 0.00200060894" mass="0.209926668" fullinertia="0.000467124718 0.00134483319 0.00181139823 -3.61815051e-09 1.75497348e-08 -2.49312487e-11" />
+        <geom name="backplate_collision_0" pos="0 0 0.002" quat="1 0 0 0" group="3" type="box" size="0.145 0.08 0.002" />
+        <geom name="backplate_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_6" />
+        <body name="enclosure_wall" pos="-0.0465 0 0.004" quat="1 0 0 0">
+          <inertial pos="0.00805919617 -2.53660311e-08 0.0161815458" mass="0.0590484226" fullinertia="0.000124034926 0.000126593226 0.000219664778 2.54604525e-11 -6.0135935e-06 3.98366772e-11" />
+          <geom name="enclosure_wall_collision_0" pos="0 0 0.0245" quat="1 0 0 0" group="3" type="box" size="0.0475 0.054 0.0245" />
+          <geom name="enclosure_wall_collision_1" pos="-0.054 0 0.00275" quat="1 0 0 0" group="3" type="box" size="0.0065 0.067 0.00275" />
+          <geom name="enclosure_wall_collision_2" pos="0.054 0 0.00275" quat="1 0 0 0" group="3" type="box" size="0.0065 0.067 0.00275" />
+          <geom name="enclosure_wall_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_7" />
+        </body>
+        <body name="lid" pos="-0.0477 0 0.042" quat="1 0 0 0">
+          <inertial pos="-0.00762654096 -2.34340316e-08 0.00622659922" mass="0.0280826662" fullinertia="3.16123241e-05 2.30742506e-05 5.45821838e-05 1.92618079e-11 -2.85515878e-07 -6.18097177e-12" />
+          <geom name="lid_collision_0" pos="0 0 0.004" quat="1 0 0 0" group="3" type="box" size="0.0463 0.0516 0.004" />
+          <geom name="lid_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_8" />
+        </body>
+      </body>
+      <body name="camera_mount_base" pos="0 0 0" quat="1 0 0 0">
+        <inertial pos="0.300649081343 0.000190505241386 0.029603947197" mass="0.0651696758735" fullinertia="3.54921533071e-05 3.09828916834e-05 3.4794664376e-05 -1.14225352737e-07 -9.85069437637e-08 -4.1694523263e-08" />
+        <geom name="camera_mount_base_collision_0" pos="0 0 0" quat="1 0 0 0" group="3" type="mesh" mesh="mesh_9" />
+        <geom name="camera_mount_base_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_9" />
+        <body name="cam_bracket" pos="0 0 0" quat="1 0 0 0">
+          <inertial pos="0.296809791149 0.000121637268842 0.0752206564949" mass="0.0765956464529" fullinertia="0.00012026201916 6.76484524096e-05 6.22050401477e-05 2.11203005307e-08 3.99436705885e-06 3.86840615553e-07" />
+          <geom name="cam_bracket_collision_0" pos="0 0 0" quat="1 0 0 0" group="3" type="mesh" mesh="mesh_10" />
+          <geom name="cam_bracket_visual_0" pos="0 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_10" />
+          <body name="zed_front_camera_link" pos="0.310499988794 0 0.0872057420664" quat="0.965925826289 0 0.258819045102 0">
+            <body name="zed_front_camera_center" pos="0 0 0.015" quat="1 0 0 0">
+              <inertial pos="-0.00641 0 0.000185" mass="0.230" fullinertia="0.0006062 5.314e-05 0.0006242 0 0 0" />
+              <geom name="zed_front_camera_center_collision_0" pos="-0.00641 0 0.000185" quat="1 0 0 0" group="3" type="box" size="0.02155 0.087625 0.015125" />
+              <geom name="zed_front_camera_center_visual_0" pos="-0.01 0 0" quat="1 0 0 0" group="2" contype="0" conaffinity="0" rgba="0.25 0.3 0.4 1" type="mesh" mesh="mesh_11" />
+              <body name="zed_front_left_camera_frame" pos="-0.005 0.06 0" quat="1 0 0 0">
+                <body name="zed_front_left_camera_frame_optical" pos="0 0 0" quat="0.500000013397 -0.5 0.499999986603 -0.5" />
+                <body name="zed_front_imu_link" pos="0.005 -0.06 0" quat="1 0 0 0" />
+              </body>
+              <body name="zed_front_right_camera_frame" pos="-0.005 -0.06 0" quat="1 0 0 0">
+                <body name="zed_front_right_camera_frame_optical" pos="0 0 0" quat="0.500000013397 -0.5 0.499999986603 -0.5" />
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <light pos="2 -3 9" dir="-.1 .2 -1" diffuse=".8 .8 .8" castshadow="true" />
+    <light pos="-3 5 7" dir=".2 -.2 -1" diffuse=".35 .35 .35" castshadow="false" />
+    <geom name="apron_0_0" type="box" pos="-3.0 -8.25 -0.075" size="5.0 1.75 0.075" group="0" material="yard_floor" />
+    <geom name="apron_0_1" type="box" pos="-3.0 -4.75 -0.075" size="5.0 1.75 0.075" group="0" material="yard_floor" />
+    <geom name="apron_0_2" type="box" pos="-3.0 0.0 -0.075" size="5.0 3.0 0.075" group="0" material="yard_floor" />
+    <geom name="apron_0_3" type="box" pos="-3.0 4.75 -0.075" size="5.0 1.75 0.075" group="0" material="yard_floor" />
+    <geom name="apron_0_4" type="box" pos="-3.0 8.25 -0.075" size="5.0 1.75 0.075" group="0" material="yard_floor" />
+    <geom name="apron_1_0" type="box" pos="5.5 -8.25 -0.075" size="3.5 1.75 0.075" group="0" material="yard_floor" />
+    <geom name="apron_1_2" type="box" pos="5.5 0.0 -0.075" size="3.5 3.0 0.075" group="0" material="yard_floor" />
+    <geom name="apron_1_4" type="box" pos="5.5 8.25 -0.075" size="3.5 1.75 0.075" group="0" material="yard_floor" />
+    <geom name="apron_2_0" type="box" pos="12.5 -8.25 -0.075" size="3.5 1.75 0.075" group="0" material="yard_floor" />
+    <geom name="apron_2_1" type="box" pos="12.5 -4.75 -0.075" size="3.5 1.75 0.075" group="0" material="yard_floor" />
+    <geom name="apron_2_2" type="box" pos="12.5 0.0 -0.075" size="3.5 3.0 0.075" group="0" material="yard_floor" />
+    <geom name="apron_2_3" type="box" pos="12.5 4.75 -0.075" size="3.5 1.75 0.075" group="0" material="yard_floor" />
+    <geom name="apron_2_4" type="box" pos="12.5 8.25 -0.075" size="3.5 1.75 0.075" group="0" material="yard_floor" />
+    <geom name="stair_1" type="box" pos="2.1375 0.0 0.03875" size="0.13749999999999996 2.0 0.08875" group="0" material="step_even" />
+    <geom name="stair_edge_1" type="box" pos="2.009 0.0 0.128" size="0.008999999999999897 2.0 0.0005000000000000004" group="4" rgba=".95 .65 .14 1" contype="0" conaffinity="0" />
+    <geom name="stair_2" type="box" pos="2.4124999999999996 0.0 0.10250000000000001" size="0.13749999999999996 2.0 0.1525" group="0" material="step_odd" />
+    <geom name="stair_edge_2" type="box" pos="2.284 0.0 0.2555" size="0.008999999999999897 2.0 0.0005000000000000004" group="4" rgba=".95 .65 .14 1" contype="0" conaffinity="0" />
+    <geom name="stair_3" type="box" pos="2.6875 0.0 0.16625" size="0.13749999999999996 2.0 0.21625" group="0" material="step_even" />
+    <geom name="stair_edge_3" type="box" pos="2.5589999999999997 0.0 0.383" size="0.008999999999999897 2.0 0.0005000000000000004" group="4" rgba=".95 .65 .14 1" contype="0" conaffinity="0" />
+    <geom name="stair_4" type="box" pos="2.9625000000000004 0.0 0.23" size="0.13749999999999996 2.0 0.28" group="0" material="step_odd" />
+    <geom name="stair_edge_4" type="box" pos="2.834 0.0 0.5105" size="0.008999999999999897 2.0 0.0005000000000000004" group="4" rgba=".95 .65 .14 1" contype="0" conaffinity="0" />
+    <geom name="stair_5" type="box" pos="3.2375 0.0 0.29374999999999996" size="0.13749999999999996 2.0 0.34375" group="0" material="step_even" />
+    <geom name="stair_edge_5" type="box" pos="3.109 0.0 0.6379999999999999" size="0.008999999999999897 2.0 0.0005000000000000004" group="4" rgba=".95 .65 .14 1" contype="0" conaffinity="0" />
+    <geom name="stair_6" type="box" pos="3.5125 0.0 0.3575" size="0.13749999999999996 2.0 0.40750000000000003" group="0" material="step_odd" />
+    <geom name="stair_edge_6" type="box" pos="3.384 0.0 0.7655000000000001" size="0.008999999999999897 2.0 0.0005000000000000004" group="4" rgba=".95 .65 .14 1" contype="0" conaffinity="0" />
+    <geom name="stair_7" type="box" pos="3.7875000000000005 0.0 0.42125" size="0.13749999999999996 2.0 0.47125000000000006" group="0" material="step_even" />
+    <geom name="stair_edge_7" type="box" pos="3.6590000000000003 0.0 0.893" size="0.008999999999999897 2.0 0.0005000000000000004" group="4" rgba=".95 .65 .14 1" contype="0" conaffinity="0" />
+    <geom name="stair_8" type="box" pos="4.0625 0.0 0.485" size="0.13749999999999996 2.0 0.535" group="0" material="step_odd" />
+    <geom name="stair_edge_8" type="box" pos="3.934 0.0 1.0205" size="0.008999999999999897 2.0 0.0004999999999999449" group="4" rgba=".95 .65 .14 1" contype="0" conaffinity="0" />
+    <geom name="top_platform" type="box" pos="4.95 0.0 0.485" size="0.75 2.0 0.535" group="0" material="step_even" />
+    <geom name="ramp" type="box" group="0" material="step_odd" size="1.3374210411543233 2 0.075" euler="0 0.3912355791271742 0" pos="6.907763817142168 0 0.44066710491765543" />
+    <geom name="stone_0" type="box" pos="2.062914980019733 3.1763509627625677 -0.4089241582842047" size="0.06291498001973306 0.17635096276256768 0.39107584171579535" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_1" type="box" pos="2.449936799314341 3.1763509627625677 -0.4064897902674813" size="0.17635096276256745 0.17635096276256768 0.39351020973251877" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_2" type="box" pos="2.9503946013517828 3.1763509627625677 -0.3878684959980863" size="0.17635096276256745 0.17635096276256768 0.41213150400191373" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_3" type="box" pos="3.4508524033892254 3.1763509627625677 -0.4160669805392414" size="0.17635096276256768 0.17635096276256768 0.38393301946075864" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_4" type="box" pos="3.951310205426667 3.1763509627625677 -0.38956780109736355" size="0.17635096276256745 0.17635096276256768 0.4104321989026365" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_5" type="box" pos="4.45176800746411 3.1763509627625677 -0.3903523873004874" size="0.17635096276256768 0.17635096276256768 0.40964761269951266" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_6" type="box" pos="4.952225809501552 3.1763509627625677 -0.40104134295290816" size="0.17635096276256723 0.17635096276256768 0.3989586570470919" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_7" type="box" pos="5.452683611538994 3.1763509627625677 -0.4063967095786092" size="0.17635096276256768 0.17635096276256768 0.39360329042139086" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_8" type="box" pos="5.953141413576436 3.1763509627625677 -0.40719583932807696" size="0.17635096276256768 0.17635096276256768 0.3928041606719231" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_9" type="box" pos="6.453599215613878 3.1763509627625677 -0.4079608436624381" size="0.17635096276256768 0.17635096276256768 0.3920391563375619" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_10" type="box" pos="6.954057017651321 3.1763509627625677 -0.4017836992890743" size="0.17635096276256768 0.17635096276256768 0.39821630071092573" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_11" type="box" pos="7.454514819688764 3.1763509627625677 -0.3998522909574784" size="0.17635096276256768 0.17635096276256768 0.40014770904252167" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_12" type="box" pos="7.954972621726206 3.1763509627625677 -0.3982626225275609" size="0.17635096276256768 0.17635096276256768 0.40173737747243915" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_13" type="box" pos="8.45543042376365 3.1763509627625677 -0.3839081562611285" size="0.17635096276256768 0.17635096276256768 0.41609184373887154" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_14" type="box" pos="8.889768631519262 3.1763509627625677 -0.3904955253715218" size="0.11023136848073811 0.17635096276256768 0.4095044746284782" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_15" type="box" pos="2.0358439678666675 3.67680876480001 -0.38412055340009865" size="0.03584396786666777 0.17635096276256768 0.4158794465999014" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_16" type="box" pos="2.3957947750082105 3.67680876480001 -0.40924562123366626" size="0.17635096276256768 0.17635096276256768 0.3907543787663338" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_17" type="box" pos="2.8962525770456526 3.67680876480001 -0.4110349378967258" size="0.17635096276256768 0.17635096276256768 0.38896506210327425" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_18" type="box" pos="3.3967103790830953 3.67680876480001 -0.39634516914128903" size="0.17635096276256768 0.17635096276256768 0.403654830858711" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_19" type="box" pos="3.897168181120537 3.67680876480001 -0.41481091775141365" size="0.17635096276256745 0.17635096276256768 0.3851890822485864" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_20" type="box" pos="4.39762598315798 3.67680876480001 -0.41507922527725655" size="0.17635096276256768 0.17635096276256768 0.3849207747227435" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_21" type="box" pos="4.898083785195421 3.67680876480001 -0.39951647137797297" size="0.17635096276256768 0.17635096276256768 0.4004835286220271" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_22" type="box" pos="5.398541587232864 3.67680876480001 -0.40109749152111807" size="0.17635096276256768 0.17635096276256768 0.398902508478882" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_23" type="box" pos="5.8989993892703065 3.67680876480001 -0.3864520791540552" size="0.17635096276256723 0.17635096276256768 0.4135479208459448" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_24" type="box" pos="6.399457191307748 3.67680876480001 -0.3958032542790577" size="0.17635096276256768 0.17635096276256768 0.40419674572094233" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_25" type="box" pos="6.899914993345191 3.67680876480001 -0.3995415159776189" size="0.17635096276256768 0.17635096276256768 0.40045848402238116" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_26" type="box" pos="7.4003727953826335 3.67680876480001 -0.40010153816409244" size="0.17635096276256768 0.17635096276256768 0.3998984618359076" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_27" type="box" pos="7.900830597420077 3.67680876480001 -0.408199693435031" size="0.17635096276256812 0.17635096276256768 0.39180030656496906" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_28" type="box" pos="8.401288399457519 3.67680876480001 -0.4158549541059823" size="0.17635096276256768 0.17635096276256768 0.38414504589401777" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_29" type="box" pos="8.862697619366196 3.67680876480001 -0.40998953340468813" size="0.13730238063380362 0.17635096276256768 0.3900104665953119" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_30" type="box" pos="2.0481625925239806 4.177266566837452 -0.4097230818531066" size="0.04816259252398036 0.17635096276256768 0.39027691814689347" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_31" type="box" pos="2.420432024322835 4.177266566837452 -0.40423693259837246" size="0.17635096276256768 0.17635096276256768 0.3957630674016276" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_32" type="box" pos="2.920889826360278 4.177266566837452 -0.4161167032529216" size="0.17635096276256745 0.17635096276256768 0.38388329674707844" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_33" type="box" pos="3.4213476283977196 4.177266566837452 -0.3892813855573865" size="0.17635096276256745 0.17635096276256768 0.41071861444261354" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_34" type="box" pos="3.921805430435162 4.177266566837452 -0.4112217055673877" size="0.17635096276256768 0.17635096276256768 0.38877829443261236" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_35" type="box" pos="4.422263232472604 4.177266566837452 -0.407547433978935" size="0.17635096276256768 0.17635096276256768 0.39245256602106504" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_36" type="box" pos="4.9227210345100465 4.177266566837452 -0.38764835097912054" size="0.17635096276256768 0.17635096276256768 0.4123516490208795" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_37" type="box" pos="5.423178836547489 4.177266566837452 -0.3996820341223871" size="0.17635096276256723 0.17635096276256768 0.4003179658776129" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_38" type="box" pos="5.923636638584931 4.177266566837452 -0.38872596503939244" size="0.17635096276256768 0.17635096276256768 0.4112740349606076" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_39" type="box" pos="6.4240944406223734 4.177266566837452 -0.3954625519031118" size="0.17635096276256768 0.17635096276256768 0.40453744809688824" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_40" type="box" pos="6.924552242659816 4.177266566837452 -0.3921482581632851" size="0.17635096276256768 0.17635096276256768 0.40785174183671496" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_41" type="box" pos="7.425010044697259 4.177266566837452 -0.4132665693839873" size="0.17635096276256768 0.17635096276256768 0.38673343061601273" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_42" type="box" pos="7.925467846734701 4.177266566837452 -0.39866381520546973" size="0.17635096276256768 0.17635096276256768 0.4013361847945303" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_43" type="box" pos="8.425925648772145 4.177266566837452 -0.39974758922198805" size="0.17635096276256768 0.17635096276256768 0.400252410778012" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_44" type="box" pos="8.87501624402351 4.177266566837452 -0.38794039998844326" size="0.12498375597649058 0.17635096276256768 0.4120596000115568" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_45" type="box" pos="2.303769491999887 4.677724368874895 -0.39681137888318785" size="0.17635096276256768 0.17635096276256768 0.4031886211168122" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_46" type="box" pos="2.8042272940373296 4.677724368874895 -0.4143137227901899" size="0.17635096276256745 0.17635096276256768 0.38568627720981014" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_47" type="box" pos="3.3046850960747713 4.677724368874895 -0.40364926430558545" size="0.17635096276256745 0.17635096276256768 0.3963507356944146" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_48" type="box" pos="3.805142898112214 4.677724368874895 -0.405747063238259" size="0.17635096276256768 0.17635096276256768 0.39425293676174106" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_49" type="box" pos="4.305600700149656 4.677724368874895 -0.41136009703283755" size="0.17635096276256768 0.17635096276256768 0.3886399029671625" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_50" type="box" pos="4.806058502187098 4.677724368874895 -0.3897266187215381" size="0.17635096276256768 0.17635096276256768 0.41027338127846197" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_51" type="box" pos="5.306516304224541 4.677724368874895 -0.4039151004235338" size="0.17635096276256723 0.17635096276256768 0.39608489957646625" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_52" type="box" pos="5.806974106261983 4.677724368874895 -0.3844522063784435" size="0.17635096276256768 0.17635096276256768 0.4155477936215565" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_53" type="box" pos="6.307431908299425 4.677724368874895 -0.39707743403962154" size="0.17635096276256768 0.17635096276256768 0.4029225659603785" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_54" type="box" pos="6.807889710336868 4.677724368874895 -0.39658819807588463" size="0.17635096276256768 0.17635096276256768 0.4034118019241154" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_55" type="box" pos="7.3083475123743105 4.677724368874895 -0.3955184295775718" size="0.17635096276256768 0.17635096276256768 0.40448157042242827" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_56" type="box" pos="7.808805314411753 4.677724368874895 -0.3942696102382813" size="0.17635096276256768 0.17635096276256768 0.40573038976171877" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_57" type="box" pos="8.309263116449197 4.677724368874895 -0.4113409917514779" size="0.17635096276256768 0.17635096276256768 0.3886590082485221" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_58" type="box" pos="8.809720918486638 4.677724368874895 -0.40193837701295665" size="0.17635096276256768 0.17635096276256768 0.3980616229870434" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_59" type="box" pos="2.2608456333862703 5.178182170912336 -0.4031664606532814" size="0.17635096276256768 0.17635096276256768 0.39683353934671867" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_60" type="box" pos="2.761303435423713 5.178182170912336 -0.4130974187461514" size="0.17635096276256745 0.17635096276256768 0.38690258125384863" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_61" type="box" pos="3.2617612374611546 5.178182170912336 -0.3848068383695784" size="0.17635096276256745 0.17635096276256768 0.41519316163042164" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_62" type="box" pos="3.7622190394985973 5.178182170912336 -0.4092555153859678" size="0.17635096276256768 0.17635096276256768 0.3907444846140322" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_63" type="box" pos="4.26267684153604 5.178182170912336 -0.3944217627135049" size="0.17635096276256723 0.17635096276256768 0.40557823728649517" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_64" type="box" pos="4.763134643573482 5.178182170912336 -0.4064815479821633" size="0.17635096276256768 0.17635096276256768 0.39351845201783675" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_65" type="box" pos="5.263592445610923 5.178182170912336 -0.3878514922143398" size="0.17635096276256768 0.17635096276256768 0.41214850778566026" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_66" type="box" pos="5.764050247648366 5.178182170912336 -0.3947319218398995" size="0.17635096276256768 0.17635096276256768 0.4052680781601005" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_67" type="box" pos="6.2645080496858085 5.178182170912336 -0.4119636273198405" size="0.17635096276256768 0.17635096276256768 0.38803637268015956" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_68" type="box" pos="6.764965851723251 5.178182170912336 -0.38879338269733654" size="0.17635096276256768 0.17635096276256768 0.4112066173026635" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_69" type="box" pos="7.265423653760694 5.178182170912336 -0.38554988426578835" size="0.17635096276256768 0.17635096276256768 0.4144501157342117" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_70" type="box" pos="7.765881455798136 5.178182170912336 -0.3868824175152741" size="0.17635096276256768 0.17635096276256768 0.41311758248472596" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_71" type="box" pos="8.266339257835579 5.178182170912336 -0.3977358042558874" size="0.17635096276256768 0.17635096276256768 0.40226419574411265" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_72" type="box" pos="8.766797059873022 5.178182170912336 -0.411514025751323" size="0.17635096276256768 0.17635096276256768 0.38848597424867704" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_73" type="box" pos="2.2442332080311953 5.678639972949779 -0.38610335524703" size="0.17635096276256745 0.17635096276256768 0.41389664475297006" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_74" type="box" pos="2.744691010068638 5.678639972949779 -0.39830064746460014" size="0.17635096276256768 0.17635096276256768 0.4016993525353999" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_75" type="box" pos="3.2451488121060796 5.678639972949779 -0.4103743619319517" size="0.17635096276256745 0.17635096276256768 0.38962563806804834" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_76" type="box" pos="3.7456066141435223 5.678639972949779 -0.3875273864922739" size="0.17635096276256768 0.17635096276256768 0.4124726135077261" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_77" type="box" pos="4.246064416180964 5.678639972949779 -0.39540232400575936" size="0.17635096276256768 0.17635096276256768 0.4045976759942407" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_78" type="box" pos="4.746522218218407 5.678639972949779 -0.3977366120427759" size="0.17635096276256768 0.17635096276256768 0.40226338795722416" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_79" type="box" pos="5.246980020255849 5.678639972949779 -0.40401767037507375" size="0.17635096276256723 0.17635096276256768 0.3959823296249263" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_80" type="box" pos="5.747437822293291 5.678639972949779 -0.4028918120396779" size="0.17635096276256768 0.17635096276256768 0.39710818796032216" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_81" type="box" pos="6.2478956243307335 5.678639972949779 -0.4084603359916528" size="0.17635096276256768 0.17635096276256768 0.3915396640083472" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_82" type="box" pos="6.748353426368176 5.678639972949779 -0.4150020296806937" size="0.17635096276256768 0.17635096276256768 0.3849979703193063" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_83" type="box" pos="7.248811228405619 5.678639972949779 -0.3877819358048451" size="0.17635096276256768 0.17635096276256768 0.41221806419515494" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_84" type="box" pos="7.749269030443061 5.678639972949779 -0.40104799195051033" size="0.17635096276256768 0.17635096276256768 0.3989520080494897" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_85" type="box" pos="8.249726832480503 5.678639972949779 -0.3984530015262465" size="0.17635096276256768 0.17635096276256768 0.4015469984737535" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_86" type="box" pos="8.750184634517947 5.678639972949779 -0.4057754159295726" size="0.17635096276256768 0.17635096276256768 0.39422458407042743" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_87" type="box" pos="2.0586189347077717 6.179097774987222 -0.41541968393807577" size="0.05861893470777191 0.17635096276256723 0.3845803160619243" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_88" type="box" pos="2.4413447086904183 6.179097774987222 -0.4041509050351119" size="0.17635096276256745 0.17635096276256723 0.3958490949648881" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_89" type="box" pos="2.941802510727861 6.179097774987222 -0.4152523215978716" size="0.17635096276256768 0.17635096276256723 0.3847476784021284" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_90" type="box" pos="3.4422603127653026 6.179097774987222 -0.41224693822968284" size="0.17635096276256745 0.17635096276256723 0.3877530617703172" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_91" type="box" pos="3.9427181148027453 6.179097774987222 -0.38482891603048025" size="0.17635096276256768 0.17635096276256723 0.4151710839695198" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_92" type="box" pos="4.443175916840188 6.179097774987222 -0.3948765700025151" size="0.17635096276256723 0.17635096276256723 0.40512342999748496" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_93" type="box" pos="4.94363371887763 6.179097774987222 -0.40233111587890363" size="0.17635096276256768 0.17635096276256723 0.3976688841210964" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_94" type="box" pos="5.444091520915071 6.179097774987222 -0.3992290173797853" size="0.17635096276256768 0.17635096276256723 0.40077098262021477" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_95" type="box" pos="5.944549322952514 6.179097774987222 -0.38789266579818005" size="0.17635096276256768 0.17635096276256723 0.41210733420182" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_96" type="box" pos="6.4450071249899565 6.179097774987222 -0.4050594070007528" size="0.17635096276256768 0.17635096276256723 0.3949405929992472" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_97" type="box" pos="6.945464927027399 6.179097774987222 -0.39706771433516713" size="0.17635096276256768 0.17635096276256723 0.4029322856648329" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_98" type="box" pos="7.445922729064842 6.179097774987222 -0.3940346749903649" size="0.17635096276256768 0.17635096276256723 0.40596532500963517" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_99" type="box" pos="7.9463805311022835 6.179097774987222 -0.404695575330058" size="0.17635096276256723 0.17635096276256723 0.39530442466994203" group="0" rgba=".48 .66 .67 1" />
+    <geom name="stone_100" type="box" pos="8.446838333139727 6.179097774987222 -0.39937975845702395" size="0.17635096276256768 0.17635096276256723 0.4006202415429761" group="0" rgba=".58 .74 .73 1" />
+    <geom name="stone_101" type="box" pos="8.885472586207301 6.179097774987222 -0.39138583854225445" size="0.1145274137926986 0.17635096276256723 0.4086141614577456" group="0" rgba=".48 .66 .67 1" />
+    <geom name="rough_base" type="box" pos="5.5 -4.75 -0.105" size="3.5 1.75 0.045" group="0" material="yard_floor" />
+    <geom name="rough_0_0" type="box" pos="2.125 -6.375 -0.015" size="0.125 0.125 0.045" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_0_1" type="box" pos="2.125 -6.125 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_0_2" type="box" pos="2.125 -5.875 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_0_3" type="box" pos="2.125 -5.625 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_0_4" type="box" pos="2.125 -5.375 -0.045" size="0.125 0.125 0.015" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_0_5" type="box" pos="2.125 -5.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_0_6" type="box" pos="2.125 -4.875 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_0_7" type="box" pos="2.125 -4.625 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_0_8" type="box" pos="2.125 -4.375 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_0_9" type="box" pos="2.125 -4.125 -0.055" size="0.125 0.125 0.0049999999999999975" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_0_10" type="box" pos="2.125 -3.875 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_0_11" type="box" pos="2.125 -3.625 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_0_12" type="box" pos="2.125 -3.375 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_0_13" type="box" pos="2.125 -3.125 -0.0049999999999999975" size="0.125 0.125 0.055" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_1_0" type="box" pos="2.375 -6.375 -0.015" size="0.125 0.125 0.045" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_1_1" type="box" pos="2.375 -6.125 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_1_2" type="box" pos="2.375 -5.875 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_1_3" type="box" pos="2.375 -5.625 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_1_4" type="box" pos="2.375 -5.375 -0.055" size="0.125 0.125 0.0049999999999999975" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_1_5" type="box" pos="2.375 -5.125 -0.045" size="0.125 0.125 0.015" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_1_6" type="box" pos="2.375 -4.875 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_1_7" type="box" pos="2.375 -4.625 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_1_8" type="box" pos="2.375 -4.375 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_1_9" type="box" pos="2.375 -4.125 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_1_10" type="box" pos="2.375 -3.875 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_1_11" type="box" pos="2.375 -3.625 -0.015" size="0.125 0.125 0.045" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_1_12" type="box" pos="2.375 -3.375 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_1_13" type="box" pos="2.375 -3.125 -0.045" size="0.125 0.125 0.015" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_2_0" type="box" pos="2.625 -6.375 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_2_1" type="box" pos="2.625 -6.125 -0.015" size="0.125 0.125 0.045" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_2_2" type="box" pos="2.625 -5.875 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_2_3" type="box" pos="2.625 -5.625 -0.0049999999999999975" size="0.125 0.125 0.055" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_2_4" type="box" pos="2.625 -5.375 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_2_5" type="box" pos="2.625 -5.125 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_2_6" type="box" pos="2.625 -4.875 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_2_7" type="box" pos="2.625 -4.625 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_2_8" type="box" pos="2.625 -4.375 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_2_9" type="box" pos="2.625 -4.125 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_2_10" type="box" pos="2.625 -3.875 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_2_11" type="box" pos="2.625 -3.625 -0.03" size="0.125 0.125 0.03" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_2_12" type="box" pos="2.625 -3.375 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_2_13" type="box" pos="2.625 -3.125 -0.03" size="0.125 0.125 0.03" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_3_0" type="box" pos="2.875 -6.375 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_3_1" type="box" pos="2.875 -6.125 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_3_2" type="box" pos="2.875 -5.875 -0.055" size="0.125 0.125 0.0049999999999999975" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_3_3" type="box" pos="2.875 -5.625 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_3_4" type="box" pos="2.875 -5.375 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_3_5" type="box" pos="2.875 -5.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_3_6" type="box" pos="2.875 -4.875 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_3_7" type="box" pos="2.875 -4.625 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_3_8" type="box" pos="2.875 -4.375 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_3_9" type="box" pos="2.875 -4.125 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_3_10" type="box" pos="2.875 -3.875 -0.015" size="0.125 0.125 0.045" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_3_11" type="box" pos="2.875 -3.625 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_3_12" type="box" pos="2.875 -3.375 -0.03" size="0.125 0.125 0.03" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_3_13" type="box" pos="2.875 -3.125 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_4_0" type="box" pos="3.125 -6.375 -0.055" size="0.125 0.125 0.0049999999999999975" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_4_1" type="box" pos="3.125 -6.125 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_4_2" type="box" pos="3.125 -5.875 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_4_3" type="box" pos="3.125 -5.625 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_4_4" type="box" pos="3.125 -5.375 -0.055" size="0.125 0.125 0.0049999999999999975" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_4_5" type="box" pos="3.125 -5.125 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_4_6" type="box" pos="3.125 -4.875 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_4_7" type="box" pos="3.125 -4.625 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_4_8" type="box" pos="3.125 -4.375 -0.015" size="0.125 0.125 0.045" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_4_9" type="box" pos="3.125 -4.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_4_10" type="box" pos="3.125 -3.875 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_4_11" type="box" pos="3.125 -3.625 -0.03" size="0.125 0.125 0.03" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_4_12" type="box" pos="3.125 -3.375 -0.045" size="0.125 0.125 0.015" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_4_13" type="box" pos="3.125 -3.125 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_5_0" type="box" pos="3.375 -6.375 -0.03" size="0.125 0.125 0.03" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_5_1" type="box" pos="3.375 -6.125 -0.015" size="0.125 0.125 0.045" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_5_2" type="box" pos="3.375 -5.875 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_5_3" type="box" pos="3.375 -5.625 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_5_4" type="box" pos="3.375 -5.375 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_5_5" type="box" pos="3.375 -5.125 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_5_6" type="box" pos="3.375 -4.875 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_5_7" type="box" pos="3.375 -4.625 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_5_8" type="box" pos="3.375 -4.375 -0.03" size="0.125 0.125 0.03" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_5_9" type="box" pos="3.375 -4.125 -0.055" size="0.125 0.125 0.0049999999999999975" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_5_10" type="box" pos="3.375 -3.875 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_5_11" type="box" pos="3.375 -3.625 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_5_12" type="box" pos="3.375 -3.375 -0.055" size="0.125 0.125 0.0049999999999999975" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_5_13" type="box" pos="3.375 -3.125 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_6_0" type="box" pos="3.625 -6.375 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_6_1" type="box" pos="3.625 -6.125 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_6_2" type="box" pos="3.625 -5.875 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_6_3" type="box" pos="3.625 -5.625 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_6_4" type="box" pos="3.625 -5.375 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_6_5" type="box" pos="3.625 -5.125 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_6_6" type="box" pos="3.625 -4.875 -0.015" size="0.125 0.125 0.045" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_6_7" type="box" pos="3.625 -4.625 -0.03" size="0.125 0.125 0.03" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_6_8" type="box" pos="3.625 -4.375 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_6_9" type="box" pos="3.625 -4.125 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_6_10" type="box" pos="3.625 -3.875 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_6_11" type="box" pos="3.625 -3.625 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_6_12" type="box" pos="3.625 -3.375 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_6_13" type="box" pos="3.625 -3.125 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_7_0" type="box" pos="3.875 -6.375 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_7_1" type="box" pos="3.875 -6.125 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_7_2" type="box" pos="3.875 -5.875 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_7_3" type="box" pos="3.875 -5.625 -0.045" size="0.125 0.125 0.015" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_7_4" type="box" pos="3.875 -5.375 -0.015" size="0.125 0.125 0.045" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_7_5" type="box" pos="3.875 -5.125 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_7_6" type="box" pos="3.875 -4.875 -0.03" size="0.125 0.125 0.03" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_7_7" type="box" pos="3.875 -4.625 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_7_8" type="box" pos="3.875 -4.375 -0.015" size="0.125 0.125 0.045" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_7_9" type="box" pos="3.875 -4.125 -0.045" size="0.125 0.125 0.015" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_7_10" type="box" pos="3.875 -3.875 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_7_11" type="box" pos="3.875 -3.625 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_7_12" type="box" pos="3.875 -3.375 -0.015" size="0.125 0.125 0.045" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_7_13" type="box" pos="3.875 -3.125 -0.045" size="0.125 0.125 0.015" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_8_0" type="box" pos="4.125 -6.375 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_8_1" type="box" pos="4.125 -6.125 -0.03" size="0.125 0.125 0.03" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_8_2" type="box" pos="4.125 -5.875 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_8_3" type="box" pos="4.125 -5.625 -0.03" size="0.125 0.125 0.03" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_8_4" type="box" pos="4.125 -5.375 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_8_5" type="box" pos="4.125 -5.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_8_6" type="box" pos="4.125 -4.875 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_8_7" type="box" pos="4.125 -4.625 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_8_8" type="box" pos="4.125 -4.375 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_8_9" type="box" pos="4.125 -4.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_8_10" type="box" pos="4.125 -3.875 -0.015" size="0.125 0.125 0.045" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_8_11" type="box" pos="4.125 -3.625 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_8_12" type="box" pos="4.125 -3.375 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_8_13" type="box" pos="4.125 -3.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_9_0" type="box" pos="4.375 -6.375 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_9_1" type="box" pos="4.375 -6.125 -0.055" size="0.125 0.125 0.0049999999999999975" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_9_2" type="box" pos="4.375 -5.875 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_9_3" type="box" pos="4.375 -5.625 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_9_4" type="box" pos="4.375 -5.375 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_9_5" type="box" pos="4.375 -5.125 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_9_6" type="box" pos="4.375 -4.875 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_9_7" type="box" pos="4.375 -4.625 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_9_8" type="box" pos="4.375 -4.375 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_9_9" type="box" pos="4.375 -4.125 -0.015" size="0.125 0.125 0.045" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_9_10" type="box" pos="4.375 -3.875 -0.015" size="0.125 0.125 0.045" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_9_11" type="box" pos="4.375 -3.625 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_9_12" type="box" pos="4.375 -3.375 -0.015" size="0.125 0.125 0.045" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_9_13" type="box" pos="4.375 -3.125 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_10_0" type="box" pos="4.625 -6.375 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_10_1" type="box" pos="4.625 -6.125 -0.055" size="0.125 0.125 0.0049999999999999975" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_10_2" type="box" pos="4.625 -5.875 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_10_3" type="box" pos="4.625 -5.625 -0.03" size="0.125 0.125 0.03" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_10_4" type="box" pos="4.625 -5.375 -0.015" size="0.125 0.125 0.045" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_10_5" type="box" pos="4.625 -5.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_10_6" type="box" pos="4.625 -4.875 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_10_7" type="box" pos="4.625 -4.625 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_10_8" type="box" pos="4.625 -4.375 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_10_9" type="box" pos="4.625 -4.125 -0.03" size="0.125 0.125 0.03" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_10_10" type="box" pos="4.625 -3.875 -0.045" size="0.125 0.125 0.015" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_10_11" type="box" pos="4.625 -3.625 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_10_12" type="box" pos="4.625 -3.375 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_10_13" type="box" pos="4.625 -3.125 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_11_0" type="box" pos="4.875 -6.375 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_11_1" type="box" pos="4.875 -6.125 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_11_2" type="box" pos="4.875 -5.875 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_11_3" type="box" pos="4.875 -5.625 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_11_4" type="box" pos="4.875 -5.375 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_11_5" type="box" pos="4.875 -5.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_11_6" type="box" pos="4.875 -4.875 -0.055" size="0.125 0.125 0.0049999999999999975" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_11_7" type="box" pos="4.875 -4.625 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_11_8" type="box" pos="4.875 -4.375 -0.03" size="0.125 0.125 0.03" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_11_9" type="box" pos="4.875 -4.125 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_11_10" type="box" pos="4.875 -3.875 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_11_11" type="box" pos="4.875 -3.625 -0.045" size="0.125 0.125 0.015" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_11_12" type="box" pos="4.875 -3.375 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_11_13" type="box" pos="4.875 -3.125 -0.015" size="0.125 0.125 0.045" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_12_0" type="box" pos="5.125 -6.375 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_12_1" type="box" pos="5.125 -6.125 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_12_2" type="box" pos="5.125 -5.875 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_12_3" type="box" pos="5.125 -5.625 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_12_4" type="box" pos="5.125 -5.375 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_12_5" type="box" pos="5.125 -5.125 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_12_6" type="box" pos="5.125 -4.875 -0.045" size="0.125 0.125 0.015" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_12_7" type="box" pos="5.125 -4.625 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_12_8" type="box" pos="5.125 -4.375 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_12_9" type="box" pos="5.125 -4.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_12_10" type="box" pos="5.125 -3.875 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_12_11" type="box" pos="5.125 -3.625 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_12_12" type="box" pos="5.125 -3.375 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_12_13" type="box" pos="5.125 -3.125 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_13_0" type="box" pos="5.375 -6.375 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_13_1" type="box" pos="5.375 -6.125 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_13_2" type="box" pos="5.375 -5.875 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_13_3" type="box" pos="5.375 -5.625 -0.0049999999999999975" size="0.125 0.125 0.055" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_13_4" type="box" pos="5.375 -5.375 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_13_5" type="box" pos="5.375 -5.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_13_6" type="box" pos="5.375 -4.875 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_13_7" type="box" pos="5.375 -4.625 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_13_8" type="box" pos="5.375 -4.375 -0.015" size="0.125 0.125 0.045" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_13_9" type="box" pos="5.375 -4.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_13_10" type="box" pos="5.375 -3.875 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_13_11" type="box" pos="5.375 -3.625 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_13_12" type="box" pos="5.375 -3.375 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_13_13" type="box" pos="5.375 -3.125 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_14_0" type="box" pos="5.625 -6.375 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_14_1" type="box" pos="5.625 -6.125 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_14_2" type="box" pos="5.625 -5.875 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_14_3" type="box" pos="5.625 -5.625 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_14_4" type="box" pos="5.625 -5.375 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_14_5" type="box" pos="5.625 -5.125 -0.015" size="0.125 0.125 0.045" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_14_6" type="box" pos="5.625 -4.875 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_14_7" type="box" pos="5.625 -4.625 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_14_8" type="box" pos="5.625 -4.375 -0.015" size="0.125 0.125 0.045" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_14_9" type="box" pos="5.625 -4.125 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_14_10" type="box" pos="5.625 -3.875 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_14_11" type="box" pos="5.625 -3.625 -0.03" size="0.125 0.125 0.03" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_14_12" type="box" pos="5.625 -3.375 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_14_13" type="box" pos="5.625 -3.125 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_15_0" type="box" pos="5.875 -6.375 -0.015" size="0.125 0.125 0.045" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_15_1" type="box" pos="5.875 -6.125 -0.055" size="0.125 0.125 0.0049999999999999975" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_15_2" type="box" pos="5.875 -5.875 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_15_3" type="box" pos="5.875 -5.625 -0.015" size="0.125 0.125 0.045" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_15_4" type="box" pos="5.875 -5.375 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_15_5" type="box" pos="5.875 -5.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_15_6" type="box" pos="5.875 -4.875 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_15_7" type="box" pos="5.875 -4.625 -0.015" size="0.125 0.125 0.045" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_15_8" type="box" pos="5.875 -4.375 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_15_9" type="box" pos="5.875 -4.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_15_10" type="box" pos="5.875 -3.875 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_15_11" type="box" pos="5.875 -3.625 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_15_12" type="box" pos="5.875 -3.375 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_15_13" type="box" pos="5.875 -3.125 -0.045" size="0.125 0.125 0.015" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_16_0" type="box" pos="6.125 -6.375 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_16_1" type="box" pos="6.125 -6.125 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_16_2" type="box" pos="6.125 -5.875 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_16_3" type="box" pos="6.125 -5.625 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_16_4" type="box" pos="6.125 -5.375 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_16_5" type="box" pos="6.125 -5.125 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_16_6" type="box" pos="6.125 -4.875 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_16_7" type="box" pos="6.125 -4.625 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_16_8" type="box" pos="6.125 -4.375 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_16_9" type="box" pos="6.125 -4.125 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_16_10" type="box" pos="6.125 -3.875 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_16_11" type="box" pos="6.125 -3.625 -0.03" size="0.125 0.125 0.03" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_16_12" type="box" pos="6.125 -3.375 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_16_13" type="box" pos="6.125 -3.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_17_0" type="box" pos="6.375 -6.375 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_17_1" type="box" pos="6.375 -6.125 -0.055" size="0.125 0.125 0.0049999999999999975" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_17_2" type="box" pos="6.375 -5.875 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_17_3" type="box" pos="6.375 -5.625 -0.045" size="0.125 0.125 0.015" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_17_4" type="box" pos="6.375 -5.375 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_17_5" type="box" pos="6.375 -5.125 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_17_6" type="box" pos="6.375 -4.875 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_17_7" type="box" pos="6.375 -4.625 -0.015" size="0.125 0.125 0.045" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_17_8" type="box" pos="6.375 -4.375 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_17_9" type="box" pos="6.375 -4.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_17_10" type="box" pos="6.375 -3.875 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_17_11" type="box" pos="6.375 -3.625 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_17_12" type="box" pos="6.375 -3.375 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_17_13" type="box" pos="6.375 -3.125 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_18_0" type="box" pos="6.625 -6.375 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_18_1" type="box" pos="6.625 -6.125 -0.015" size="0.125 0.125 0.045" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_18_2" type="box" pos="6.625 -5.875 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_18_3" type="box" pos="6.625 -5.625 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_18_4" type="box" pos="6.625 -5.375 -0.045" size="0.125 0.125 0.015" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_18_5" type="box" pos="6.625 -5.125 -0.015" size="0.125 0.125 0.045" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_18_6" type="box" pos="6.625 -4.875 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_18_7" type="box" pos="6.625 -4.625 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_18_8" type="box" pos="6.625 -4.375 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_18_9" type="box" pos="6.625 -4.125 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_18_10" type="box" pos="6.625 -3.875 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_18_11" type="box" pos="6.625 -3.625 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_18_12" type="box" pos="6.625 -3.375 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_18_13" type="box" pos="6.625 -3.125 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_19_0" type="box" pos="6.875 -6.375 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_19_1" type="box" pos="6.875 -6.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_19_2" type="box" pos="6.875 -5.875 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_19_3" type="box" pos="6.875 -5.625 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_19_4" type="box" pos="6.875 -5.375 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_19_5" type="box" pos="6.875 -5.125 -0.045" size="0.125 0.125 0.015" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_19_6" type="box" pos="6.875 -4.875 -0.015" size="0.125 0.125 0.045" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_19_7" type="box" pos="6.875 -4.625 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_19_8" type="box" pos="6.875 -4.375 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_19_9" type="box" pos="6.875 -4.125 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_19_10" type="box" pos="6.875 -3.875 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_19_11" type="box" pos="6.875 -3.625 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_19_12" type="box" pos="6.875 -3.375 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_19_13" type="box" pos="6.875 -3.125 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_20_0" type="box" pos="7.125 -6.375 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_20_1" type="box" pos="7.125 -6.125 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_20_2" type="box" pos="7.125 -5.875 -0.045" size="0.125 0.125 0.015" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_20_3" type="box" pos="7.125 -5.625 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_20_4" type="box" pos="7.125 -5.375 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_20_5" type="box" pos="7.125 -5.125 -0.03" size="0.125 0.125 0.03" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_20_6" type="box" pos="7.125 -4.875 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_20_7" type="box" pos="7.125 -4.625 -0.015" size="0.125 0.125 0.045" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_20_8" type="box" pos="7.125 -4.375 -0.015" size="0.125 0.125 0.045" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_20_9" type="box" pos="7.125 -4.125 -0.015" size="0.125 0.125 0.045" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_20_10" type="box" pos="7.125 -3.875 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_20_11" type="box" pos="7.125 -3.625 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_20_12" type="box" pos="7.125 -3.375 -0.055" size="0.125 0.125 0.0049999999999999975" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_20_13" type="box" pos="7.125 -3.125 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_21_0" type="box" pos="7.375 -6.375 -0.03" size="0.125 0.125 0.03" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_21_1" type="box" pos="7.375 -6.125 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_21_2" type="box" pos="7.375 -5.875 -0.0049999999999999975" size="0.125 0.125 0.055" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_21_3" type="box" pos="7.375 -5.625 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_21_4" type="box" pos="7.375 -5.375 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_21_5" type="box" pos="7.375 -5.125 -0.045" size="0.125 0.125 0.015" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_21_6" type="box" pos="7.375 -4.875 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_21_7" type="box" pos="7.375 -4.625 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_21_8" type="box" pos="7.375 -4.375 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_21_9" type="box" pos="7.375 -4.125 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_21_10" type="box" pos="7.375 -3.875 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_21_11" type="box" pos="7.375 -3.625 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_21_12" type="box" pos="7.375 -3.375 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_21_13" type="box" pos="7.375 -3.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_22_0" type="box" pos="7.625 -6.375 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_22_1" type="box" pos="7.625 -6.125 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_22_2" type="box" pos="7.625 -5.875 -0.015" size="0.125 0.125 0.045" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_22_3" type="box" pos="7.625 -5.625 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_22_4" type="box" pos="7.625 -5.375 -0.015" size="0.125 0.125 0.045" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_22_5" type="box" pos="7.625 -5.125 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_22_6" type="box" pos="7.625 -4.875 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_22_7" type="box" pos="7.625 -4.625 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_22_8" type="box" pos="7.625 -4.375 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_22_9" type="box" pos="7.625 -4.125 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_22_10" type="box" pos="7.625 -3.875 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_22_11" type="box" pos="7.625 -3.625 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_22_12" type="box" pos="7.625 -3.375 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_22_13" type="box" pos="7.625 -3.125 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_23_0" type="box" pos="7.875 -6.375 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_23_1" type="box" pos="7.875 -6.125 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_23_2" type="box" pos="7.875 -5.875 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_23_3" type="box" pos="7.875 -5.625 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_23_4" type="box" pos="7.875 -5.375 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_23_5" type="box" pos="7.875 -5.125 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_23_6" type="box" pos="7.875 -4.875 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_23_7" type="box" pos="7.875 -4.625 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_23_8" type="box" pos="7.875 -4.375 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_23_9" type="box" pos="7.875 -4.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_23_10" type="box" pos="7.875 -3.875 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_23_11" type="box" pos="7.875 -3.625 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_23_12" type="box" pos="7.875 -3.375 -0.055" size="0.125 0.125 0.0049999999999999975" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_23_13" type="box" pos="7.875 -3.125 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_24_0" type="box" pos="8.125 -6.375 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_24_1" type="box" pos="8.125 -6.125 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_24_2" type="box" pos="8.125 -5.875 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_24_3" type="box" pos="8.125 -5.625 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_24_4" type="box" pos="8.125 -5.375 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_24_5" type="box" pos="8.125 -5.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_24_6" type="box" pos="8.125 -4.875 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_24_7" type="box" pos="8.125 -4.625 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_24_8" type="box" pos="8.125 -4.375 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_24_9" type="box" pos="8.125 -4.125 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_24_10" type="box" pos="8.125 -3.875 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_24_11" type="box" pos="8.125 -3.625 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_24_12" type="box" pos="8.125 -3.375 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_24_13" type="box" pos="8.125 -3.125 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_25_0" type="box" pos="8.375 -6.375 -0.015" size="0.125 0.125 0.045" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_25_1" type="box" pos="8.375 -6.125 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_25_2" type="box" pos="8.375 -5.875 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_25_3" type="box" pos="8.375 -5.625 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_25_4" type="box" pos="8.375 -5.375 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_25_5" type="box" pos="8.375 -5.125 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_25_6" type="box" pos="8.375 -4.875 -0.015" size="0.125 0.125 0.045" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_25_7" type="box" pos="8.375 -4.625 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_25_8" type="box" pos="8.375 -4.375 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_25_9" type="box" pos="8.375 -4.125 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_25_10" type="box" pos="8.375 -3.875 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_25_11" type="box" pos="8.375 -3.625 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_25_12" type="box" pos="8.375 -3.375 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_25_13" type="box" pos="8.375 -3.125 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_26_0" type="box" pos="8.625 -6.375 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_26_1" type="box" pos="8.625 -6.125 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_26_2" type="box" pos="8.625 -5.875 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_26_3" type="box" pos="8.625 -5.625 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_26_4" type="box" pos="8.625 -5.375 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_26_5" type="box" pos="8.625 -5.125 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_26_6" type="box" pos="8.625 -4.875 -0.045" size="0.125 0.125 0.015" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_26_7" type="box" pos="8.625 -4.625 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_26_8" type="box" pos="8.625 -4.375 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_26_9" type="box" pos="8.625 -4.125 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_26_10" type="box" pos="8.625 -3.875 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_26_11" type="box" pos="8.625 -3.625 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_26_12" type="box" pos="8.625 -3.375 -0.03" size="0.125 0.125 0.03" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_26_13" type="box" pos="8.625 -3.125 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_27_0" type="box" pos="8.875 -6.375 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_27_1" type="box" pos="8.875 -6.125 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_27_2" type="box" pos="8.875 -5.875 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_27_3" type="box" pos="8.875 -5.625 -0.055" size="0.125 0.125 0.0049999999999999975" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_27_4" type="box" pos="8.875 -5.375 -0.045" size="0.125 0.125 0.015" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_27_5" type="box" pos="8.875 -5.125 -0.024999999999999998" size="0.125 0.125 0.034999999999999996" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_27_6" type="box" pos="8.875 -4.875 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_27_7" type="box" pos="8.875 -4.625 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_27_8" type="box" pos="8.875 -4.375 -0.034999999999999996" size="0.125 0.125 0.024999999999999998" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_27_9" type="box" pos="8.875 -4.125 -0.05" size="0.125 0.125 0.009999999999999998" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_27_10" type="box" pos="8.875 -3.875 -0.019999999999999997" size="0.125 0.125 0.04" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_27_11" type="box" pos="8.875 -3.625 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".63 .57 .48 1" />
+    <geom name="rough_27_12" type="box" pos="8.875 -3.375 -0.009999999999999998" size="0.125 0.125 0.05" group="0" rgba=".52 .46 .38 1" />
+    <geom name="rough_27_13" type="box" pos="8.875 -3.125 -0.04" size="0.125 0.125 0.019999999999999997" group="0" rgba=".63 .57 .48 1" />
+    <geom name="entry_stairs" type="box" pos="1.8250000000000002 0.0 0.0015" size="0.025000000000000022 2.0 0.0005" group="4" rgba=".95 .65 .14 1" contype="0" conaffinity="0" />
+    <geom name="entry_stones" type="box" pos="1.8250000000000002 4.75 0.0015" size="0.025000000000000022 1.75 0.0005" group="4" rgba=".22 .76 .72 1" contype="0" conaffinity="0" />
+    <geom name="entry_rough" type="box" pos="1.8250000000000002 -4.75 0.0015" size="0.025000000000000022 1.75 0.0005" group="4" rgba=".85 .59 .33 1" contype="0" conaffinity="0" />
+    <body name="fpm_FL" mocap="true" pos="0 0 -4">
+      <geom type="sphere" size=".035" rgba="1.0 0.16 0.12 1.0" group="5" contype="0" conaffinity="0" />
+      <geom type="cylinder" size=".008 .07" pos="0 0 .07" rgba="1.0 0.16 0.12 1.0" group="5" contype="0" conaffinity="0" />
+    </body>
+    <body name="fpm_FR" mocap="true" pos="0 0 -4">
+      <geom type="sphere" size=".035" rgba="0.15 0.5 1.0 1.0" group="5" contype="0" conaffinity="0" />
+      <geom type="cylinder" size=".008 .07" pos="0 0 .07" rgba="0.15 0.5 1.0 1.0" group="5" contype="0" conaffinity="0" />
+    </body>
+    <body name="fpm_HL" mocap="true" pos="0 0 -4">
+      <geom type="sphere" size=".035" rgba="1.0 0.75 0.1 1.0" group="5" contype="0" conaffinity="0" />
+      <geom type="cylinder" size=".008 .07" pos="0 0 .07" rgba="1.0 0.75 0.1 1.0" group="5" contype="0" conaffinity="0" />
+    </body>
+    <body name="fpm_HR" mocap="true" pos="0 0 -4">
+      <geom type="sphere" size=".035" rgba="0.12 0.95 0.4 1.0" group="5" contype="0" conaffinity="0" />
+      <geom type="cylinder" size=".008 .07" pos="0 0 .07" rgba="0.12 0.95 0.4 1.0" group="5" contype="0" conaffinity="0" />
+    </body>
+  </worldbody>
+  <actuator>
+    <motor name="fl_hip_roll_joint" joint="fl_hip_roll_joint" ctrlrange="-30.0 30.0" />
+    <motor name="fl_hip_pitch_joint" joint="fl_hip_pitch_joint" ctrlrange="-30.0 30.0" />
+    <motor name="fl_knee_joint" joint="fl_knee_joint" ctrlrange="-30.0 30.0" />
+    <motor name="fr_hip_roll_joint" joint="fr_hip_roll_joint" ctrlrange="-30.0 30.0" />
+    <motor name="fr_hip_pitch_joint" joint="fr_hip_pitch_joint" ctrlrange="-30.0 30.0" />
+    <motor name="fr_knee_joint" joint="fr_knee_joint" ctrlrange="-30.0 30.0" />
+    <motor name="hl_hip_roll_joint" joint="hl_hip_roll_joint" ctrlrange="-30.0 30.0" />
+    <motor name="hl_hip_pitch_joint" joint="hl_hip_pitch_joint" ctrlrange="-30.0 30.0" />
+    <motor name="hl_knee_joint" joint="hl_knee_joint" ctrlrange="-30.0 30.0" />
+    <motor name="hr_hip_roll_joint" joint="hr_hip_roll_joint" ctrlrange="-30.0 30.0" />
+    <motor name="hr_hip_pitch_joint" joint="hr_hip_pitch_joint" ctrlrange="-30.0 30.0" />
+    <motor name="hr_knee_joint" joint="hr_knee_joint" ctrlrange="-30.0 30.0" />
+  </actuator>
+  <keyframe>
+    <key name="stand" qpos="0 0 0.43 1 0 0 0 0 0.698131700798 -1.1344640138 0 0.698131700798 -1.1344640138 0 0.698131700798 -1.1344640138 0 0.698131700798 -1.1344640138" />
+  </keyframe>
+  <visual>
+    <global offwidth="1440" offheight="900" />
+    <headlight ambient=".35 .35 .35" diffuse=".45 .45 .45" specular=".1 .1 .1" />
+    <quality shadowsize="4096" />
+    <map znear=".02" zfar="100" />
+  </visual>
+  <statistic center="4 0 .5" extent="17" />
+</mujoco>

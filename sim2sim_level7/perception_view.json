@@ -1,0 +1,15 @@
+{
+  "stats": {
+    "mode": "fused history",
+    "coverage": [
+      0.714,
+      0.633,
+      0.796,
+      0.837
+    ],
+    "age_s": 1.51,
+    "unknown": 0.255,
+    "version": 14,
+    "age_of_frame_s": 0.92
+  }
+}
