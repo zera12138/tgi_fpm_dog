@@ -40,7 +40,7 @@ fpm/                        上游 Watch Your Step 任务包：G1 环境、地�
 urdf/                       BPX URDF 与网格（相机支架 v9 由 bpx.urdf 引用）
 tgi/src/tgi/assets/         由 URDF 生成的 MJCF/USD，以及 G1 参考资产
 scripts/                    预检、CPU 回归、Newton 冒烟、资产转换、评估、导出检查
-sim2sim_level7/             MuJoCo 第 7 级场景闭环 sim2sim（手柄/键盘、FPM 标记、感知对照）
+sim2sim_level7/             MuJoCo 第 7 级场景闭环 sim2sim（手柄/键盘、FPM 标记）
 run.sh                      统一入口（隔离 ROS 的 LD_LIBRARY_PATH）
 ```
 
